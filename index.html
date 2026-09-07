@@ -1,0 +1,3452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The World of The Three Of Us</title>
+  <meta name="description" content="A creative, interactive appreciation sanctuary, squad lore vault, movie, book & show recommendations lounge, and custom trivia challenge for Ayebatonte, Blessing, and Kenneth." />
+  <meta property="og:title" content="The World of The Three Of Us" />
+  <meta property="og:description" content="A creative, interactive appreciation sanctuary, squad lore vault, movie, book & show recommendations lounge, and custom trivia challenge for Ayebatonte, Blessing, and Kenneth." />
+  <style>
+    :root {
+      --bg-dark: #09040e;
+      --bg-darker: #050208;
+      --bg-card: rgba(20, 8, 36, 0.65);
+      --bg-card-hover: rgba(32, 14, 56, 0.8);
+      --neon-magenta: #e026c0;
+      --neon-purple: #a855f7;
+      --neon-gold: #fbbf24;
+      --neon-cyan: #38bdf8;
+      --border-violet: rgba(168, 85, 247, 0.28);
+      --border-glow: rgba(224, 38, 192, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(224, 38, 192, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(251, 191, 36, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 110px;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .serif-font {
+      font-family: "Georgia", "Playfair Display", "Cinzel", serif;
+      letter-spacing: 0.02em;
+    }
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-violet);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      transition: all 0.25s ease;
+    }
+    .glass:hover {
+      border-color: var(--border-glow);
+    }
+    .glow-magenta { box-shadow: 0 0 20px -5px rgba(224, 38, 192, 0.5); }
+    .glow-purple { box-shadow: 0 0 20px -5px rgba(168, 85, 247, 0.5); }
+    .glow-gold { box-shadow: 0 0 20px -5px rgba(251, 191, 36, 0.4); }
+
+    /* Top Floating Header */
+    .top-bar-container {
+      position: sticky;
+      top: 14px;
+      z-index: 90;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 10px 18px;
+    }
+    .member-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .badge:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .badge-aye { border-color: rgba(168, 85, 247, 0.5); color: #d8b4fe; }
+    .badge-ble { border-color: rgba(224, 38, 192, 0.5); color: #f472b6; }
+    .badge-ken { border-color: rgba(251, 191, 36, 0.5); color: #fde047; }
+    .trivia-quick-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+      background: linear-gradient(135deg, rgba(224,38,192,0.35), rgba(168,85,247,0.35));
+      border: 1px solid rgba(224,38,192,0.5);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trivia-quick-tag:hover {
+      background: linear-gradient(135deg, rgba(224,38,192,0.6), rgba(168,85,247,0.6));
+      transform: translateY(-1px);
+    }
+
+    /* Fixed Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(12, 5, 22, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      border-radius: 9999px;
+      box-shadow: 0 16px 35px -5px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(168, 85, 247, 0.4);
+      max-width: 95vw;
+      overflow-x: auto;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+    .nav-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .nav-btn.active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+      box-shadow: 0 0 16px rgba(224, 38, 192, 0.6);
+    }
+
+    /* Content Layout */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+    .tab-section {
+      display: none;
+      animation: fadeIn 0.35s ease forwards;
+    }
+    .tab-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(224, 38, 192, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(224, 38, 192, 0.6);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Dossier Cards Grid */
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .dossier-card {
+      position: relative;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .dossier-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .avatar-orb {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .orb-ken { background: linear-gradient(135deg, #d97706, #fbbf24); box-shadow: 0 0 20px rgba(251, 191, 36, 0.4); }
+    .orb-ble { background: linear-gradient(135deg, #be185d, #f472b6); box-shadow: 0 0 20px rgba(224, 38, 192, 0.4); }
+    .orb-aye { background: linear-gradient(135deg, #6b21a8, #a855f7); box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+
+    .tag-pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.08);
+      color: var(--neon-gold);
+      margin-bottom: 6px;
+    }
+
+    /* Squad Lore & Trivia UI Elements */
+    .lore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .quote-card {
+      position: relative;
+      padding: 24px;
+      border-left: 3px solid var(--neon-purple);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quote-card.ken { border-left-color: var(--neon-gold); }
+    .quote-card.ble { border-left-color: var(--neon-magenta); }
+    .quote-card.aye { border-left-color: var(--neon-purple); }
+
+    .law-box {
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(168, 85, 247, 0.4);
+      border-radius: 12px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .trivia-hero-box {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 36px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trivia-cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .trivia-cat-pill:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .trivia-cat-pill.active {
+      background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 0 14px rgba(224, 38, 192, 0.45);
+    }
+
+    .choice-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .choice-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+      border-color: var(--neon-purple);
+    }
+    .choice-btn.selected-ken {
+      background: rgba(251, 191, 36, 0.2);
+      border-color: var(--neon-gold);
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+    }
+    .choice-btn.selected-ble {
+      background: rgba(224, 38, 192, 0.2);
+      border-color: var(--neon-magenta);
+      box-shadow: 0 0 15px rgba(224, 38, 192, 0.3);
+    }
+    .choice-btn.selected-aye {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Spotify Jukebox & Equalizer Styles */
+    .equalizer-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 18px;
+      padding: 0 4px;
+    }
+    .eq-bar {
+      width: 3px;
+      background: #1db954;
+      border-radius: 2px;
+      animation: eqWave 1.1s ease-in-out infinite alternate;
+    }
+    .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .eq-bar:nth-child(2) { height: 85%; animation-delay: 0.3s; }
+    .eq-bar:nth-child(3) { height: 100%; animation-delay: 0.15s; }
+    .eq-bar:nth-child(4) { height: 55%; animation-delay: 0.4s; }
+    .eq-bar:nth-child(5) { height: 90%; animation-delay: 0.25s; }
+    @keyframes eqWave {
+      0% { height: 20%; }
+      50% { height: 100%; }
+      100% { height: 35%; }
+    }
+    .eq-paused .eq-bar {
+      animation-play-state: paused;
+      height: 25% !important;
+      background: rgba(255,255,255,0.3);
+    }
+    .spotify-station-pill {
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .spotify-station-pill:hover {
+      background: rgba(29, 185, 84, 0.15);
+      border-color: #1db954;
+      color: #fff;
+    }
+    .spotify-station-pill.active {
+      background: rgba(29, 185, 84, 0.22);
+      border-color: #1db954;
+      color: #1db954;
+      box-shadow: 0 0 12px rgba(29, 185, 84, 0.35);
+    }
+    .track-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+    .track-row:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(29, 185, 84, 0.3);
+      transform: translateX(2px);
+    }
+    .track-row.now-playing-row {
+      border-color: #1db954;
+      background: rgba(29, 185, 84, 0.08);
+    }
+
+    /* Vinyl Spin & Toast */
+    @keyframes spinRecord {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-vinyl {
+      animation: spinRecord 5s linear infinite;
+    }
+    .spin-vinyl.paused {
+      animation-play-state: paused;
+    }
+    #toast-alert {
+      position: fixed;
+      bottom: 84px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(16, 185, 129, 0.95);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #toast-alert.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Recommendations Lounge */
+    .rec-card {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .rec-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(168, 85, 247, 0.35);
+      transform: translateY(-2px);
+    }
+    .rec-card.rec-completed {
+      opacity: 0.72;
+      background: rgba(255, 255, 255, 0.015);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+    .rec-card.rec-completed:hover {
+      opacity: 0.95;
+    }
+    .rec-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .rec-type-movie {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+    .rec-type-show {
+      background: rgba(224, 38, 192, 0.15);
+      border: 1px solid rgba(224, 38, 192, 0.4);
+      color: #f472b6;
+    }
+    .rec-type-book {
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      color: var(--neon-gold);
+    }
+    .rec-filter-tab {
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .rec-filter-tab:hover {
+      background: rgba(255, 255, 255, 0.09);
+      color: #fff;
+    }
+    .rec-filter-tab.active {
+      background: rgba(168, 85, 247, 0.25);
+      border-color: var(--neon-purple);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.35);
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 1, 8, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-box {
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px 28px;
+      position: relative;
+    }
+
+    /* Form inputs */
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-top: 6px;
+      margin-bottom: 14px;
+      outline: none;
+    }
+    .input-field:focus {
+      border-color: var(--neon-magenta);
+      box-shadow: 0 0 10px rgba(224, 38, 192, 0.3);
+    }
+
+    /* Canvas Confetti */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 300;
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas Confetti Overlay -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Top Floating Header Bar -->
+  <div class="top-bar-container">
+    <header class="glass top-bar">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.5rem;">🌌</span>
+        <div>
+          <h1 style="font-size: 1.15rem; font-weight: 700; color: #fff; line-height: 1.2;">The World of The Three Of Us</h1>
+          <p style="font-size: 0.75rem; color: var(--text-dim);">Ayebatonte • Blessing • Kenneth</p>
+        </div>
+      </div>
+      <div class="member-badges">
+        <span class="badge badge-aye" onclick="showLove('Ayebatonte')">✨ Ayebatonte</span>
+        <span class="badge badge-ble" onclick="showLove('Blessing')">👑 Blessing</span>
+        <span class="badge badge-ken" onclick="showLove('Kenneth')">⚡ Kenneth</span>
+        <span class="trivia-quick-tag" onclick="switchTab('tab-trivia')">
+          <span>🎯</span> Squad Trivia
+        </span>
+      </div>
+    </header>
+  </div>
+
+  <main class="container">
+    <!-- ========================================== -->
+    <!-- TAB 1: MINI-WORLD (HOME & CHARACTER DOSSIERS) -->
+    <!-- ========================================== -->
+    <section id="tab-miniworld" class="tab-section active">
+      <!-- Sanctuary Banner -->
+      <div class="glass glow-magenta" style="padding: 34px 28px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden;">
+        <span class="tag-pill">Sanctuary of The Unbreakable Trio</span>
+        <h2 style="font-size: 2.3rem; font-weight: 700; margin: 10px 0 14px; background: linear-gradient(135deg, #fff, #e2e8f0, #d8b4fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          Where Every Inside Joke & Midnight Convo Lives Forever
+        </h2>
+        <p style="max-width: 680px; margin: 0 auto 20px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
+          Created with deep gratitude by <strong>Ayebatonte</strong> for <strong>Blessing</strong> and <strong>Kenneth</strong>. 
+          A permanent space celebrating who we are, the memories we've carved, and the journey ahead.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="openLetterModal()">
+            💌 Read Dedication Letter
+          </button>
+          <button class="btn btn-secondary" onclick="switchTab('tab-trivia')">
+            🎯 Play Squad Trivia Challenge
+          </button>
+          <button class="btn btn-secondary" onclick="switchTab('tab-dashboard')">
+            🍿 Watch Lounge & Spotify
+          </button>
+        </div>
+      </div>
+
+      <!-- Trio Character Dossiers -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;">
+        <div>
+          <span class="tag-pill" style="color: var(--neon-cyan);">The Pillar Profiles</span>
+          <h3 style="font-size: 1.5rem; font-weight: 700;">Squad Member Dossiers</h3>
+        </div>
+        <span style="font-size: 0.85rem; color: var(--text-dim);">Tap cheers to shower love</span>
+      </div>
+
+      <div class="dossier-grid">
+        <!-- Kenneth's Card -->
+        <div class="glass dossier-card glow-gold">
+          <div>
+            <div class="dossier-header">
+              <div class="avatar-orb orb-ken">⚡</div>
+              <div>
+                <span class="tag-pill" style="color: #fde047; border: 1px solid rgba(251,191,36,0.3);">The Wisdom & Hype</span>
+                <h4 style="font-size: 1.35rem; color: #fff;">Kenneth</h4>
+                <span style="font-size: 0.82rem; color: var(--text-dim);">The Strategic Heart</span>
+              </div>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.55;">
+              Master of profound late-night counsel, unexpected laughs, and unwavering loyalty. 
+              The one who challenges our perspective and pushes us forward.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 18px;">
+              <div>🔥 <strong>Signature Trait:</strong> Giving masterclasses on life & strategy</div>
+              <div>💬 <strong>Iconic Vibe:</strong> "Trust the process, we are destined for greatness."</div>
+              <div>🛡️ <strong>Squad Role:</strong> Perspective Provider & Hype Machine</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px;">
+            <span id="cheer-count-ken" style="font-size: 0.85rem; color: var(--neon-gold); font-weight: 600;">⚡ 142 Cheers</span>
+            <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.82rem;" onclick="addCheer('Kenneth')">
+              + Send Cheer
+            </button>
+          </div>
+        </div>
+
+        <!-- Blessing's Card -->
+        <div class="glass dossier-card glow-magenta">
+          <div>
+            <div class="dossier-header">
+              <div class="avatar-orb orb-ble">👑</div>
+              <div>
+                <span class="tag-pill" style="color: #f472b6; border: 1px solid rgba(224,38,192,0.3);">Royal Sunshine</span>
+                <h4 style="font-size: 1.35rem; color: #fff;">Blessing</h4>
+                <span style="font-size: 0.82rem; color: var(--text-dim);">The Radiant Soul</span>
+              </div>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.55;">
+              The fierce protector and empathetic anchor. With radiant warmth, truthful guidance, and infectious laughter, 
+              she ensures our bond stays genuine and cherished.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 18px;">
+              <div>💖 <strong>Signature Trait:</strong> Unfiltered empathy & radiant elegance</div>
+              <div>💬 <strong>Iconic Vibe:</strong> "You guys know I love you, but please listen to me!"</div>
+              <div>🛡️ <strong>Squad Role:</strong> Heart Guardian & Reality Anchor</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px;">
+            <span id="cheer-count-ble" style="font-size: 0.85rem; color: var(--neon-magenta); font-weight: 600;">👑 188 Cheers</span>
+            <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.82rem;" onclick="addCheer('Blessing')">
+              + Send Cheer
+            </button>
+          </div>
+        </div>
+
+        <!-- Ayebatonte's Card -->
+        <div class="glass dossier-card glow-purple">
+          <div>
+            <div class="dossier-header">
+              <div class="avatar-orb orb-aye">✨</div>
+              <div>
+                <span class="tag-pill" style="color: #d8b4fe; border: 1px solid rgba(168,85,247,0.3);">The Architect & Chronicler</span>
+                <h4 style="font-size: 1.35rem; color: #fff;">Ayebatonte</h4>
+                <span style="font-size: 0.82rem; color: var(--text-dim);">The Bond Keeper</span>
+              </div>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.55;">
+              Observant, thoughtful, and deeply devoted to the squad. The one who captures memories, preserves every laugh, 
+              and engineered this digital home so our journey never fades.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 18px;">
+              <div>🌌 <strong>Signature Trait:</strong> Quiet loyalty & creative devotion</div>
+              <div>💬 <strong>Iconic Vibe:</strong> "Whatever happens, we keep this bond intact."</div>
+              <div>🛡️ <strong>Squad Role:</strong> Chronicler & Memory Architect</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px;">
+            <span id="cheer-count-aye" style="font-size: 0.85rem; color: var(--neon-purple); font-weight: 600;">✨ 164 Cheers</span>
+            <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.82rem;" onclick="addCheer('Ayebatonte')">
+              + Send Cheer
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: THE VAULT (ARCHIVE OF MEMORIES) -->
+    <!-- ========================================== -->
+    <section id="tab-vault" class="tab-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
+        <div>
+          <span class="tag-pill" style="color: var(--neon-purple);">Memory Archive</span>
+          <h2 style="font-size: 1.8rem; font-weight: 700;">The Squad Memory Vault</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Snapshots, milestone archives, and documented moments of the trio.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-primary" onclick="openUploadModal()">
+            + Add Memory
+          </button>
+        </div>
+      </div>
+
+      <!-- Memory Tag Filter Bar -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px;">
+        <button id="filter-tag-all" class="btn btn-secondary active" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterVault('all')">🌟 All Memories</button>
+        <button id="filter-tag-trio" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterVault('The Trio')">💫 The Trio</button>
+        <button id="filter-tag-ble" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterVault('Blessing')">👑 Blessing</button>
+        <button id="filter-tag-ken" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterVault('Kenneth')">⚡ Kenneth</button>
+        <button id="filter-tag-aye" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterVault('Ayebatonte')">✨ Ayebatonte</button>
+      </div>
+
+      <!-- Memories Grid -->
+      <div id="vault-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <!-- Dynamically injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: DASHBOARD & SPECIAL ADDITIONS -->
+    <!-- ========================================== -->
+    <section id="tab-dashboard" class="tab-section">
+      <!-- SQUAD WATCH & READ RECOMMENDATIONS LOUNGE (Movies, Books, Shows ONLY + Dedicated Creation Space) -->
+      <div class="glass glow-purple" style="padding: 26px; margin-bottom: 24px;">
+        <!-- Header & Quick Counters -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 46px; height: 46px; border-radius: 12px; background: rgba(168, 85, 247, 0.18); border: 1px solid var(--neon-purple); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+              🍿
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 style="font-size: 1.35rem; font-weight: 700;">Squad Watch & Read Lounge</h3>
+                <span class="tag-pill" style="margin: 0; font-size: 0.72rem; border-color: var(--neon-magenta); color: var(--neon-magenta);">
+                  Movies • Books • TV Shows
+                </span>
+              </div>
+              <p style="font-size: 0.84rem; color: var(--text-dim);">Handpicked watches and reads exclusively curated by Ayebatonte, Blessing, and Kenneth.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-primary" style="padding: 6px 14px; font-size: 0.82rem;" onclick="openAddRecModal()">
+              + Add Title (Modal)
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Bar: Types, Recommenders, Status & Search -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; background: rgba(255,255,255,0.02); padding: 14px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05);">
+          <!-- Type Filter Tabs -->
+          <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px;">
+            <button id="rec-tab-all" class="rec-filter-tab active" onclick="filterRecType('all')">
+              🌟 All (<span id="count-all-recs">0</span>)
+            </button>
+            <button id="rec-tab-movie" class="rec-filter-tab" onclick="filterRecType('Movie')">
+              🎬 Movies (<span id="count-movie-recs">0</span>)
+            </button>
+            <button id="rec-tab-show" class="rec-filter-tab" onclick="filterRecType('Show')">
+              📺 Shows (<span id="count-show-recs">0</span>)
+            </button>
+            <button id="rec-tab-book" class="rec-filter-tab" onclick="filterRecType('Book')">
+              📚 Books (<span id="count-book-recs">0</span>)
+            </button>
+          </div>
+
+          <!-- Recommender, Status & Search Filters -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <select id="rec-filter-author" class="input-field" onchange="filterRecAuthor(this.value)" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; width: auto;">
+              <option value="all">All Recommenders</option>
+              <option value="Kenneth">⚡ Kenneth's Picks</option>
+              <option value="Blessing">👑 Blessing's Picks</option>
+              <option value="Ayebatonte">✨ Ayebatonte's Picks</option>
+            </select>
+            <select id="rec-filter-status" class="input-field" onchange="filterRecStatus(this.value)" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; width: auto;">
+              <option value="all">All Statuses</option>
+              <option value="todo">⏳ To Watch / Read</option>
+              <option value="done">✅ Completed</option>
+            </select>
+            <input type="text" id="rec-search-query" class="input-field" placeholder="🔍 Search titles or vibes..." oninput="handleRecSearch(this.value)" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; max-width: 180px;" />
+          </div>
+        </div>
+
+        <!-- Main Recommendation Workspace: Split Layout -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; align-items: start;">
+          <!-- Left Column: The Interactive Catalog of Recommendations -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">Catalog Checklist</div>
+              <div style="font-size: 0.78rem; color: var(--text-dim);"><span id="rec-shown-count">0</span> titles listed</div>
+            </div>
+            <div id="recs-list" style="display: flex; flex-direction: column; gap: 12px; max-height: 520px; overflow-y: auto; padding-right: 4px;">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Right Column: "The Space to Create More" - Dedicated In-Place Recommendation Workshop -->
+          <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(168,85,247,0.25); border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.35);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <span style="font-size: 1.4rem;">✍️</span>
+              <div>
+                <h4 style="font-size: 1.1rem; color: #fff; font-weight: 700;">Recommend a Title</h4>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">The space to create more! Drop a movie, book, or show for the squad.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div>
+                <label style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">Title & Creator</label>
+                <input type="text" id="inline-rec-title" class="input-field" placeholder="e.g. Inception (Christopher Nolan)" style="margin-top: 4px; margin-bottom: 6px;" />
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">Type</label>
+                  <select id="inline-rec-type" class="input-field" style="margin-top: 4px; margin-bottom: 6px;">
+                    <option value="Movie">🎬 Movie</option>
+                    <option value="Show">📺 TV Show</option>
+                    <option value="Book">📚 Book</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">Recommended By</label>
+                  <select id="inline-rec-author" class="input-field" style="margin-top: 4px; margin-bottom: 6px;">
+                    <option value="Kenneth">⚡ Kenneth</option>
+                    <option value="Blessing">👑 Blessing</option>
+                    <option value="Ayebatonte">✨ Ayebatonte</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">Vibe / Energy Tag</label>
+                <input type="text" id="inline-rec-vibe" class="input-field" placeholder="e.g. Mind-Bending, Hilarious, Emotional Masterpiece" style="margin-top: 4px; margin-bottom: 6px;" />
+              </div>
+
+              <div>
+                <label style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">Why Must The Squad Watch/Read This?</label>
+                <textarea id="inline-rec-note" class="input-field" rows="3" placeholder="Tell Ayebatonte, Blessing, and Kenneth what makes this so special..." style="margin-top: 4px; margin-bottom: 8px; resize: vertical;"></textarea>
+              </div>
+
+              <button class="btn btn-primary" onclick="saveInlineRecommendation()" style="width: 100%; padding: 10px; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <span>✨ Add to Squad Recommendations</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPOTIFY SOUNDTRACK & SQUAD JUKEBOX SUITE -->
+      <div class="glass glow-cyan" style="padding: 26px; margin-bottom: 24px; position: relative; overflow: hidden;">
+        <!-- Header Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(29, 185, 84, 0.18); border: 1px solid #1db954; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+              🎵
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 style="font-size: 1.4rem; font-weight: 700;">Squad Soundtrack & Jukebox</h3>
+                <span id="current-station-tag" class="tag-pill" style="margin: 0; font-size: 0.72rem; border-color: #1db954; color: #1db954;">
+                  3:00 AM Convos
+                </span>
+              </div>
+              <p style="font-size: 0.84rem; color: var(--text-dim);">Live collaborative music hub celebrating the anthems of Kenneth, Blessing, and Ayebatonte.</p>
+            </div>
+          </div>
+
+          <!-- Right Controls -->
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <button id="ambient-toggle-btn" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="toggleAmbientSynth()">
+              🎧 Lo-Fi Synth: Off
+            </button>
+            <button class="btn btn-primary" style="padding: 6px 14px; font-size: 0.82rem; background: #1db954; border-color: #1db954;" onclick="openAddSongModal()">
+              + Add Song / Spotify Link
+            </button>
+          </div>
+        </div>
+
+        <!-- Curated Squad Stations Bar -->
+        <div style="margin-bottom: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim);">Curated Squad Stations:</span>
+            <div id="spotify-eq-bars" class="equalizer-bars eq-paused">
+              <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button id="station-latenight" class="spotify-station-pill active" onclick="switchSpotifyStation('latenight')">
+              🌙 3:00 AM Convos (Soul & Chill)
+            </button>
+            <button id="station-roadtrip" class="spotify-station-pill" onclick="switchSpotifyStation('roadtrip')">
+              ⚡ Kenneth's Roadtrip Hype (Afrobeats)
+            </button>
+            <button id="station-royal" class="spotify-station-pill" onclick="switchSpotifyStation('royal')">
+              👑 Blessing's Royal Aura (Soul & R&B)
+            </button>
+            <button id="station-focus" class="spotify-station-pill" onclick="switchSpotifyStation('focus')">
+              ☕ Late-Night Banter (Lo-Fi)
+            </button>
+            <button id="station-nostalgia" class="spotify-station-pill" onclick="switchSpotifyStation('nostalgia')">
+              💖 Sanctuary Nostalgia (Trio Classics)
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Player Grid (Player on Left, Anthem & Vinyl/Synth on Right) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <!-- Spotify Embed Container -->
+          <div style="border-radius: 14px; overflow: hidden; background: #000; border: 1px solid rgba(29, 185, 84, 0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.5); display: flex; flex-direction: column;">
+            <iframe id="spotify-iframe" style="border-radius:12px; display: block;" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div style="padding: 8px 14px; background: rgba(0,0,0,0.5); border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; color: var(--text-dim);">
+              <span id="player-status-badge" style="display: flex; align-items: center; gap: 6px; color: #1db954;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #1db954; box-shadow: 0 0 6px #1db954;"></span>
+                Live Spotify Player Stream
+              </span>
+              <button onclick="copyCurrentStationLink()" class="btn btn-secondary" style="padding: 2px 10px; font-size: 0.74rem;">
+                📋 Copy Link
+              </button>
+            </div>
+          </div>
+
+          <!-- Anthem & Vibe Details with Spinning Disc -->
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: #10b981; font-weight: 600;">Currently Featured Anthem</span>
+                <span id="current-curator-badge" style="font-size: 0.8rem; color: var(--text-dim);">Curated for The Trio</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 6px;">
+                <div id="spinning-disc-el" class="spin-vinyl" style="width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle, #22c55e 10%, #000 12%, #111 40%, #222 60%, #000 90%); border: 2px solid #1db954; box-shadow: 0 0 12px rgba(29,185,84,0.4); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
+                  💿
+                </div>
+                <div>
+                  <h4 id="current-anthem-title" style="font-size: 1.15rem; color: #fff; line-height: 1.3;">"Golden Hour Chill & Deep Convos"</h4>
+                  <span id="current-active-note-sub" style="font-size: 0.78rem; color: var(--neon-cyan);">Live Spotify Stream</span>
+                </div>
+              </div>
+              <p id="current-anthem-desc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.55;">
+                Late-night chats where Kenneth shares life theories, Blessing drops truth bombs, and Ayebatonte archives the laughter.
+              </p>
+            </div>
+
+            <!-- Ambient Synth Controls Panel (Hidden unless enabled) -->
+            <div id="ambient-synth-panel" style="display: none; margin-top: 14px; padding: 10px 14px; background: rgba(0,0,0,0.4); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 0.76rem; color: var(--neon-cyan); font-weight: 600;">✨ Lo-Fi Sanctuary Generator</span>
+                <span id="synth-status-txt" style="font-size: 0.72rem; color: var(--text-dim);">Active: Warm Lo-Fi Chords</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="range" id="synth-vol" min="0" max="1" step="0.05" value="0.3" oninput="setAmbientVolume(this.value)" style="flex: 1; accent-color: #38bdf8;" />
+                <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.72rem;" onclick="cycleSynthPreset()">Next Preset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Squad Jukebox Shared Tracks List -->
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.15rem; font-weight: 700; color: #fff;">Squad Jukebox Tracks</span>
+              <span id="jukebox-track-count" class="tag-pill" style="font-size: 0.72rem; padding: 1px 8px; margin: 0;">5 Tracks</span>
+            </div>
+
+            <!-- Real-time Search input for Jukebox -->
+            <div style="flex: 1; max-width: 280px; min-width: 180px;">
+              <input type="text" id="juke-search-input" class="input-field" placeholder="🔍 Search track or vibe..." oninput="handleJukeboxSearch(this.value)" style="margin: 0; padding: 6px 12px; font-size: 0.82rem;" />
+            </div>
+
+            <!-- Member Filter for Tracks -->
+            <div style="display: flex; gap: 6px; overflow-x: auto;">
+              <button id="juke-filter-all" class="btn btn-secondary active-filter" style="padding: 4px 12px; font-size: 0.78rem;" onclick="filterJukebox('all')">All</button>
+              <button id="juke-filter-ken" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.78rem;" onclick="filterJukebox('Kenneth')">⚡ Kenneth</button>
+              <button id="juke-filter-ble" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.78rem;" onclick="filterJukebox('Blessing')">👑 Blessing</button>
+              <button id="juke-filter-aye" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.78rem;" onclick="filterJukebox('Ayebatonte')">✨ Ayebatonte</button>
+            </div>
+          </div>
+
+          <!-- Jukebox Tracks Rows -->
+          <div id="jukebox-tracks-list" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Populated dynamically by renderJukebox() -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Trio Milestones Tracker -->
+      <div class="glass" style="padding: 22px; margin-bottom: 24px;">
+        <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 14px;">Trio Milestones by the Numbers</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; text-align: center;">
+          <div style="background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--neon-gold);">10,000+</div>
+            <div style="font-size: 0.82rem; color: var(--text-dim);">Laughter Fits</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--neon-magenta);">3:00 AM</div>
+            <div style="font-size: 0.82rem; color: var(--text-dim);">Deep Convo Hours</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--neon-purple);">100%</div>
+            <div style="font-size: 0.82rem; color: var(--text-dim);">Loyalty Level</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--neon-cyan);">Infinite</div>
+            <div style="font-size: 0.82rem; color: var(--text-dim);">Future Adventures</div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- ========================================== -->
+    <!-- TAB 4: SQUAD LORE & QUOTE VAULT -->
+    <!-- ========================================== -->
+    <section id="tab-lore" class="tab-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
+        <div>
+          <span class="tag-pill" style="color: var(--neon-gold);">The Sacred Archives</span>
+          <h2 style="font-size: 1.8rem; font-weight: 700;">Squad Lore & Unwritten Laws</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">The stories, unwritten codes, and iconic quotes that define The Three Of Us.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-primary" onclick="openAddLoreModal()">
+            + Add Lore / Quote
+          </button>
+        </div>
+      </div>
+
+      <!-- Lore Tag Filter -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto;">
+        <button id="lore-filter-all" class="btn btn-secondary active" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterLore('all')">🌟 All Lore</button>
+        <button id="lore-filter-laws" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterLore('laws')">📜 Unwritten Laws</button>
+        <button id="lore-filter-quotes" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterLore('quotes')">💬 Iconic Quotes</button>
+        <button id="lore-filter-stories" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="filterLore('stories')">📖 Chronicles</button>
+      </div>
+
+      <!-- The 4 Unwritten Trio Laws -->
+      <div id="laws-container" style="margin-bottom: 30px;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 14px;">The Unwritten Trio Codex</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+          <div class="law-box glass">
+            <span style="font-size: 1.4rem;">🛡️</span>
+            <div>
+              <div style="font-weight: 700; color: #fde047; font-size: 0.95rem;">Law #1: What Stays in the Trio Stays</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Zero judgment, total confidentiality, and complete emotional safety across every phone call and conversation.</div>
+            </div>
+          </div>
+          <div class="law-box glass">
+            <span style="font-size: 1.4rem;">🔥</span>
+            <div>
+              <div style="font-weight: 700; color: #f472b6; font-size: 0.95rem;">Law #2: Immediate Hype & Reality Checks</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">We cheer every win louder than anyone else, but we will always tell each other the unfiltered truth when needed.</div>
+            </div>
+          </div>
+          <div class="law-box glass">
+            <span style="font-size: 1.4rem;">🤝</span>
+            <div>
+              <div style="font-weight: 700; color: #d8b4fe; font-size: 0.95rem;">Law #3: The No-Leave-Behind Rule</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">When one of us is having a tough day, the other two show up. Distance or busy schedules never break the lifeline.</div>
+            </div>
+          </div>
+          <div class="law-box glass">
+            <span style="font-size: 1.4rem;">🌌</span>
+            <div>
+              <div style="font-weight: 700; color: #38bdf8; font-size: 0.95rem;">Law #4: Late Night Epiphanies Are Valid</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Any idea shared between 1:00 AM and 4:00 AM must be considered a billion-dollar venture until proven otherwise.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quotes & Lore Chronicles Grid -->
+      <div id="lore-quotes-section">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 14px;">Iconic Quotes Hall of Fame</h3>
+        <div id="quotes-grid" class="lore-grid"></div>
+      </div>
+
+      <div id="lore-stories-section" style="margin-top: 36px;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 14px;">Squad Chronicles & Origin Tales</h3>
+        <div id="stories-grid" style="display: flex; flex-direction: column; gap: 16px;"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: TRIVIA & CHALLENGE ARENA -->
+    <!-- ========================================== -->
+    <section id="tab-trivia" class="tab-section">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="tag-pill" style="color: var(--neon-cyan);">The Ultimate Squad Test</span>
+        <h2 style="font-size: 2.1rem; font-weight: 700; margin-top: 6px;">Squad Trivia & Challenge Arena</h2>
+        <p style="font-size: 0.92rem; color: var(--text-muted); max-width: 600px; margin: 6px auto 0;">
+          How well do you really know Kenneth, Blessing, and Ayebatonte? Test your memory, debate inside jokes, and create your own challenge questions!
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+        <button id="cat-pill-said" class="trivia-cat-pill active" onclick="selectTriviaCategory('Who Said This..?')">
+          💬 Who Said This..?
+        </button>
+        <button id="cat-pill-did" class="trivia-cat-pill" onclick="selectTriviaCategory('Who Did This..?')">
+          🕵️ Who Did This..?
+        </button>
+        <button id="cat-pill-likely" class="trivia-cat-pill" onclick="selectTriviaCategory('Most Likely To...')">
+          🏆 Most Likely To...
+        </button>
+        <button id="cat-pill-rather" class="trivia-cat-pill" onclick="selectTriviaCategory('Would You Rather...')">
+          🤔 Would You Rather...
+        </button>
+        <button id="cat-pill-deep" class="trivia-cat-pill" onclick="selectTriviaCategory('Squad Deep Trivia')">
+          🧠 Squad Deep Trivia
+        </button>
+      </div>
+
+      <!-- Main Trivia Arena Box -->
+      <div class="glass trivia-hero-box glow-magenta" style="margin-bottom: 24px;">
+        <!-- Top Stats Bar inside card -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span id="trivia-cat-badge" class="tag-pill" style="margin: 0; font-size: 0.75rem;">Who Said This..?</span>
+            <span id="trivia-source-badge" style="font-size: 0.75rem; color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 9999px;">Trio Lore</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 0.85rem; color: var(--neon-gold); font-weight: 700;">Score: <span id="trivia-score-counter">0</span></span>
+            <span style="font-size: 0.85rem; color: var(--text-dim);">Q <span id="trivia-q-num">1</span>/<span id="trivia-q-total">8</span></span>
+          </div>
+        </div>
+
+        <!-- Question Prompt View Area -->
+        <div id="trivia-prompt-container" style="min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 24px;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Interactive Answer/Choices Area -->
+        <div id="trivia-choices-container" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Feedback & Reveal Details Container -->
+        <div id="trivia-feedback-box" style="display: none; padding: 16px; border-radius: 12px; background: rgba(255,255,255,0.05); margin-bottom: 20px; text-align: left;">
+          <!-- Shows explanation, funny context, or vote results -->
+        </div>
+
+        <!-- Bottom Controls -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+          <button class="btn btn-secondary" style="font-size: 0.82rem; padding: 8px 16px;" onclick="randomTriviaQuestion()">
+            🎲 Random Surprise
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary" style="font-size: 0.82rem; padding: 8px 16px;" onclick="openAddTriviaModal()">
+              + Create Question
+            </button>
+            <button id="btn-next-trivia" class="btn btn-primary" style="font-size: 0.85rem; padding: 8px 20px;" onclick="nextTriviaQuestion()">
+              Next Question →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Questions Submissions Bank -->
+      <div class="glass" style="padding: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff;">Squad Custom Trivia Vault</h3>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">Questions added directly by Kenneth, Blessing, and Ayebatonte.</p>
+          </div>
+          <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;" onclick="openAddTriviaModal()">
+            + Add New Trivia Question
+          </button>
+        </div>
+        <div id="custom-trivia-list" style="display: flex; flex-direction: column; gap: 10px;">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- FIXED BOTTOM NAVIGATION BAR -->
+  <!-- ========================================== -->
+  <nav class="bottom-nav">
+    <button id="nav-btn-miniworld" class="nav-btn active" onclick="switchTab('tab-miniworld')">
+      <span>🌌</span> Mini-World
+    </button>
+    <button id="nav-btn-vault" class="nav-btn" onclick="switchTab('tab-vault')">
+      <span>📸</span> The Vault
+    </button>
+    <button id="nav-btn-dashboard" class="nav-btn" onclick="switchTab('tab-dashboard')">
+      <span>🍿</span> Lounge & Music
+    </button>
+    <button id="nav-btn-lore" class="nav-btn" onclick="switchTab('tab-lore')">
+      <span>📜</span> Squad Lore
+    </button>
+    <button id="nav-btn-trivia" class="nav-btn" onclick="switchTab('tab-trivia')">
+      <span>🎯</span> Trivia Arena
+    </button>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- MODAL 1: DEDICATION LETTER -->
+  <!-- ========================================== -->
+  <div id="modal-letter" class="modal-overlay" onclick="handleModalBgClick(event, 'modal-letter')">
+    <div class="glass modal-box glow-magenta">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+        <div>
+          <span class="tag-pill" style="color: #d8b4fe;">Ayebatonte's Heart</span>
+          <h3 style="font-size: 1.6rem; font-weight: 700; color: #fff; margin-top: 4px;">To My People: Blessing & Kenneth</h3>
+        </div>
+        <button onclick="closeModal('modal-letter')" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+
+      <div style="color: #cbd5e1; font-size: 0.96rem; line-height: 1.7; display: flex; flex-direction: column; gap: 14px;">
+        <p>
+          I wanted to build a corner of the digital universe that belongs entirely to <strong>The Three Of Us</strong>. 
+          Long after group chats get buried and busy seasons come and go, this sanctuary will always stand as a monument to what we have.
+        </p>
+        <p>
+          <strong>To Kenneth:</strong> Thank you for your fierce loyalty, your endless humor, and the masterclasses in wisdom you drop without even trying. 
+          Having you in our corner makes the world feel full of possibility, confidence, and unstoppable drive.
+        </p>
+        <p>
+          <strong>To Blessing:</strong> Thank you for your warmth, your sharp intuition, and the genuine love and protection you pour into us. 
+          You bring a balance and royal grace to this friendship that keeps us grounded and deeply grateful.
+        </p>
+        <p>
+          No matter where life takes us, no matter how wild our individual journeys get, we move together. 
+          This is our home.
+        </p>
+      </div>
+
+      <div style="margin-top: 24px; text-align: right; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+        <div style="font-size: 1rem; font-weight: 700; color: #fff;">With unconditional love,</div>
+        <div style="font-size: 0.9rem; color: var(--neon-purple); font-weight: 600;">Ayebatonte ✨</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 2: ADD MEMORY TO VAULT -->
+  <!-- ========================================== -->
+  <div id="modal-upload" class="modal-overlay" onclick="handleModalBgClick(event, 'modal-upload')">
+    <div class="glass modal-box glow-purple">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff;">+ Add Memory to Vault</h3>
+        <button onclick="closeModal('modal-upload')" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); saveNewMemory();">
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Memory Title</label>
+        <input type="text" id="input-mem-title" class="input-field" placeholder="e.g. Midnight Waffle Run" required />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Tagged Member / Squad</label>
+        <select id="input-mem-tag" class="input-field">
+          <option value="The Trio">💫 The Trio</option>
+          <option value="Kenneth">⚡ Kenneth</option>
+          <option value="Blessing">👑 Blessing</option>
+          <option value="Ayebatonte">✨ Ayebatonte</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Photo Image URL (or upload below)</label>
+        <input type="url" id="input-mem-url" class="input-field" placeholder="https://images.unsplash.com/... or paste image URL" />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Or Upload File from Device</label>
+        <input type="file" id="input-mem-file" accept="image/*" class="input-field" style="padding: 6px 10px;" />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Caption & Memory Story</label>
+        <textarea id="input-mem-caption" class="input-field" rows="3" placeholder="What made this moment unforgettable?" required></textarea>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-upload')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Archive Memory</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 3: ADD TRIVIA QUESTION -->
+  <!-- ========================================== -->
+  <div id="modal-trivia" class="modal-overlay" onclick="handleModalBgClick(event, 'modal-trivia')">
+    <div class="glass modal-box glow-magenta">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff;">+ Create Squad Trivia Question</h3>
+        <button onclick="closeModal('modal-trivia')" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); saveCustomTriviaQuestion();">
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Question Category</label>
+        <select id="input-triv-cat" class="input-field" onchange="toggleTriviaFormFields()">
+          <option value="Who Said This..?">💬 Who Said This..?</option>
+          <option value="Who Did This..?">🕵️ Who Did This..?</option>
+          <option value="Most Likely To...">🏆 Most Likely To...</option>
+          <option value="Would You Rather...">🤔 Would You Rather...</option>
+          <option value="Squad Deep Trivia">🧠 Squad Deep Trivia</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">The Quote, Question or Scenario</label>
+        <textarea id="input-triv-prompt" class="input-field" rows="3" placeholder="e.g. 'I promise you guys, if we leave right now we will make it in 15 minutes!'" required></textarea>
+
+        <!-- Dynamic Fields Container based on Category -->
+        <div id="dynamic-trivia-fields">
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Correct Answer / Target Person</label>
+          <select id="input-triv-answer" class="input-field">
+            <option value="Kenneth">⚡ Kenneth</option>
+            <option value="Blessing">👑 Blessing</option>
+            <option value="Ayebatonte">✨ Ayebatonte</option>
+            <option value="The Trio">💫 All Three Of Us</option>
+          </select>
+        </div>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Context / Inside Joke Story (Revealed after guessing)</label>
+        <textarea id="input-triv-context" class="input-field" rows="2" placeholder="Tell the funny backstory behind this question..."></textarea>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Added By</label>
+        <select id="input-triv-author" class="input-field">
+          <option value="Kenneth">Kenneth</option>
+          <option value="Blessing">Blessing</option>
+          <option value="Ayebatonte">Ayebatonte</option>
+        </select>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-trivia')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add to Arena</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 4: ADD SQUAD LORE / QUOTE -->
+  <!-- ========================================== -->
+  <div id="modal-lore" class="modal-overlay" onclick="handleModalBgClick(event, 'modal-lore')">
+    <div class="glass modal-box glow-gold">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff;">+ Document Squad Lore</h3>
+        <button onclick="closeModal('modal-lore')" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); saveNewLoreEntry();">
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Lore Type</label>
+        <select id="input-lore-type" class="input-field">
+          <option value="quote">💬 Iconic Quote</option>
+          <option value="story">📖 Squad Chronicle / Story</option>
+          <option value="law">📜 Unwritten Law</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Title or Speaker</label>
+        <input type="text" id="input-lore-title" class="input-field" placeholder="e.g. Kenneth at 2:00 AM, or The Great Roadtrip Disaster" required />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Content / Quote Text</label>
+        <textarea id="input-lore-text" class="input-field" rows="4" placeholder="Write down the quote or story exactly as it happened..." required></textarea>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Associated Member</label>
+        <select id="input-lore-person" class="input-field">
+          <option value="Kenneth">⚡ Kenneth</option>
+          <option value="Blessing">👑 Blessing</option>
+          <option value="Ayebatonte">✨ Ayebatonte</option>
+          <option value="The Trio">💫 The Trio</option>
+        </select>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-lore')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Archive in Lore</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 5: ADD RECOMMENDATION MODAL -->
+  <!-- ========================================== -->
+  <div id="modal-rec" class="modal-overlay" onclick="handleModalBgClick(event, 'modal-rec')">
+    <div class="glass modal-box glow-purple">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff;">+ Add Movie, Show, or Book</h3>
+        <button onclick="closeModal('modal-rec')" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); saveNewRecommendation();">
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Category</label>
+        <select id="input-rec-type" class="input-field">
+          <option value="Movie">🎬 Movie</option>
+          <option value="Show">📺 TV Show</option>
+          <option value="Book">📚 Book</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Title</label>
+        <input type="text" id="input-rec-title" class="input-field" placeholder="e.g. Interstellar, Severance, or Atomic Habits" required />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Recommended By</label>
+        <select id="input-rec-author" class="input-field">
+          <option value="Kenneth">⚡ Kenneth</option>
+          <option value="Blessing">👑 Blessing</option>
+          <option value="Ayebatonte">✨ Ayebatonte</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Vibe / Energy</label>
+        <input type="text" id="input-rec-vibe" class="input-field" placeholder="e.g. Mind-Bending, Hilarious, Deep Life Philosophy" />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Squad Note (Why should we watch/read this?)</label>
+        <textarea id="input-rec-note" class="input-field" rows="3" placeholder="Kenneth says this will redefine your perspective..."></textarea>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-rec')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Recommendation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 6: ADD SONG / SPOTIFY LINK -->
+  <!-- ========================================== -->
+  <div id="modal-song" class="modal-overlay" onclick="handleModalBgClick(event, 'modal-song')">
+    <div class="glass modal-box glow-cyan">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff;">+ Add Song to Jukebox</h3>
+        <button onclick="closeModal('modal-song')" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">✕</button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); saveNewSong();">
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Song Title & Artist</label>
+        <input type="text" id="input-song-title" class="input-field" placeholder="e.g. Asake - Lonely At The Top, or SZA - Snooze" required />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Spotify Link or Embed URL</label>
+        <input type="url" id="input-song-url" class="input-field" placeholder="https://open.spotify.com/track/... or playlist link" required />
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Curated / Added By</label>
+        <select id="input-song-author" class="input-field">
+          <option value="Kenneth">⚡ Kenneth</option>
+          <option value="Blessing">👑 Blessing</option>
+          <option value="Ayebatonte">✨ Ayebatonte</option>
+        </select>
+
+        <label style="font-size: 0.85rem; color: var(--text-muted);">Why is this a Trio Anthem? (Squad Note)</label>
+        <textarea id="input-song-note" class="input-field" rows="2" placeholder="e.g. Kenneth played this on loop during our midnight trip!"></textarea>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-song')">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="background: #1db954; border-color: #1db954;">Add to Jukebox</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div id="toast-alert">✓ Notification text</div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT LOGIC & STATE PERSISTENCE -->
+  <!-- ========================================== -->
+  <script>
+    /* --- Persistent State & Default Data Sets --- */
+    const DEFAULT_MEMORIES = [
+      {
+        id: 1,
+        title: "Late Night Banter & Uncontrollable Laughs",
+        tag: "The Trio",
+        caption: "When Kenneth gave advice, Blessing protected the vibe, and Ayebatonte silently recorded the madness.",
+        img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+        date: "Last Weekend",
+        hearts: 28
+      },
+      {
+        id: 2,
+        title: "Kenneth's Wisdom Masterclass",
+        tag: "Kenneth",
+        caption: "Dropping high-tier life philosophies with maximum humor.",
+        img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80",
+        date: "A Memorable Evening",
+        hearts: 19
+      },
+      {
+        id: 3,
+        title: "Blessing's Royal Aura & Fierce Protection",
+        tag: "Blessing",
+        caption: "Caring deeply, giving unconditional love, and standing up for the trio no matter what.",
+        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80",
+        date: "A Classic Sunday",
+        hearts: 24
+      },
+      {
+        id: 4,
+        title: "Ayebatonte's Quiet Watch",
+        tag: "Ayebatonte",
+        caption: "The quiet keeper of our bond, treasuring every single moment we spend together.",
+        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+        date: "Golden Hour",
+        hearts: 32
+      }
+    ];
+
+    const DEFAULT_RECS = [
+      {
+        id: 1,
+        title: "Everything Everywhere All At Once",
+        type: "Movie",
+        author: "Ayebatonte",
+        vibe: "Mind-Bending & Heartfelt",
+        note: "A multiverse journey about kindness, generational healing, and what really matters in this universe.",
+        done: true,
+        loves: 34
+      },
+      {
+        id: 2,
+        title: "Atomic Habits - James Clear",
+        type: "Book",
+        author: "Kenneth",
+        vibe: "Life Changing & Focus",
+        note: "Kenneth's blueprint: 1% better every single day. Practical systems for discipline and squad greatness.",
+        done: false,
+        loves: 29
+      },
+      {
+        id: 3,
+        title: "Severance (Season 1)",
+        type: "Show",
+        author: "Blessing",
+        vibe: "Mystery & Edge of Seat",
+        note: "Blessing's obsession. Prepare to sit on the edge of your couch for all 9 episodes and unravel theories.",
+        done: true,
+        loves: 41
+      },
+      {
+        id: 4,
+        title: "Interstellar",
+        type: "Movie",
+        author: "Kenneth",
+        vibe: "Cosmic Masterpiece",
+        note: "The soundtrack, the time dilation, and love transcending dimensions. Unmissable cinema.",
+        done: true,
+        loves: 48
+      },
+      {
+        id: 5,
+        title: "The Midnight Library - Matt Haig",
+        type: "Book",
+        author: "Blessing",
+        vibe: "Deeply Healing & Hopeful",
+        note: "A story exploring every path you didn't take, and realizing the present moment with your people is everything.",
+        done: false,
+        loves: 31
+      },
+      {
+        id: 6,
+        title: "Abbott Elementary",
+        type: "Show",
+        author: "Ayebatonte",
+        vibe: "Pure Comfort & Laughs",
+        note: "Hilarious, heartwarming mockumentary sitcom that will lift our spirits no matter how crazy the week was.",
+        done: false,
+        loves: 26
+      },
+      {
+        id: 7,
+        title: "Spider-Man: Across the Spider-Verse",
+        type: "Movie",
+        author: "Ayebatonte",
+        vibe: "Visual Art & Electric Beats",
+        note: "Groundbreaking animation and soundtrack. The ultimate trio watch party experience.",
+        done: true,
+        loves: 52
+      },
+      {
+        id: 8,
+        title: "Born a Crime - Trevor Noah",
+        type: "Book",
+        author: "Kenneth",
+        vibe: "Hilarious & Inspiring",
+        note: "Equal parts side-splitting laughter and resilient storytelling. Kenneth quotes this endlessly.",
+        done: false,
+        loves: 37
+      }
+    ];
+
+    const DEFAULT_SPOTIFY_STATIONS = {
+      latenight: {
+        name: "3:00 AM Convos (Soul & Chill)",
+        tag: "3:00 AM Convos",
+        curator: "Curated for The Trio",
+        anthem: "Golden Hour Chill & Deep Convos",
+        desc: "Late-night chats where Kenneth shares life theories, Blessing drops truth bombs, and Ayebatonte archives the laughter.",
+        embed: "https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6?utm_source=generator&theme=0",
+        url: "https://open.spotify.com/playlist/37i9dQZF1DX4WYpdgoIcn6"
+      },
+      roadtrip: {
+        name: "Kenneth's Roadtrip Hype",
+        tag: "Kenneth's Roadtrip Hype",
+        curator: "Curated by Kenneth",
+        anthem: "Afrobeats High-Energy Anthem",
+        desc: "Vibrant Afrobeats, uplifting rhythms, and car-window-down tracks chosen to elevate squad momentum.",
+        embed: "https://open.spotify.com/embed/playlist/37i9dQZF1DX56bqlsMxVQP?utm_source=generator&theme=0",
+        url: "https://open.spotify.com/playlist/37i9dQZF1DX56bqlsMxVQP"
+      },
+      royal: {
+        name: "Blessing's Royal Soul Aura",
+        tag: "Blessing's Royal Soul Aura",
+        curator: "Curated by Blessing",
+        anthem: "Warm R&B & Timeless Vocals",
+        desc: "Empowering, lush, and soulful rhythms radiating elegance, protective loyalty, and heartfelt care.",
+        embed: "https://open.spotify.com/embed/playlist/37i9dQZF1DX6VDO8a6FAHL?utm_source=generator&theme=0",
+        url: "https://open.spotify.com/playlist/37i9dQZF1DX6VDO8a6FAHL"
+      },
+      focus: {
+        name: "Late-Night Banter & Lo-Fi Beats",
+        tag: "Late-Night Banter",
+        curator: "Curated for Deep Convos",
+        anthem: "Midnight Grooves & Mellow Chords",
+        desc: "Smooth beats, gentle basslines, and lo-fi melodies made for deep conversations, study sessions, and relaxed squad evenings.",
+        embed: "https://open.spotify.com/embed/playlist/37i9dQZF1DXdLEN7aqioXM?utm_source=generator&theme=0",
+        url: "https://open.spotify.com/playlist/37i9dQZF1DXdLEN7aqioXM"
+      },
+      nostalgia: {
+        name: "Sanctuary Nostalgia",
+        tag: "Sanctuary Nostalgia",
+        curator: "Curated by Ayebatonte",
+        anthem: "Timeless Trio Classics",
+        desc: "The nostalgic melodies that take us back to Day 1, celebrated memories, and endless late-night calls.",
+        embed: "https://open.spotify.com/embed/playlist/37i9dQZF1DX4o1oenSJRJd?utm_source=generator&theme=0",
+        url: "https://open.spotify.com/playlist/37i9dQZF1DX4o1oenSJRJd"
+      }
+    };
+const DEFAULT_LORE = [
+      {
+        id: 1,
+        type: "quote",
+        speaker: "Kenneth",
+        text: "You can't let temporary discomfort ruin a generational vision. Also, who's buying food?",
+        date: "Late 2024",
+        reactions: { fire: 14, laugh: 9 }
+      },
+      {
+        id: 2,
+        type: "quote",
+        speaker: "Blessing",
+        text: "I told you guys this would happen three weeks ago, but did anyone listen? No. But I still love you.",
+        date: "Classic Sunday",
+        reactions: { fire: 8, laugh: 22 }
+      },
+      {
+        id: 3,
+        type: "quote",
+        speaker: "Ayebatonte",
+        text: "I don't say much, but I'm building a sanctuary so none of your unhinged statements are ever forgotten.",
+        date: "Sanctuary Origin",
+        reactions: { fire: 19, laugh: 11 }
+      },
+      {
+        id: 4,
+        type: "story",
+        title: "The Unplanned 3:00 AM Strategic Summit",
+        speaker: "The Trio",
+        text: "What started as a 5-minute check-in call turned into a 3-hour deep dive into life, career ambitions, psychology, and hilarious personal roasts. By 3:45 AM, we had basically redesigned our entire life trajectories. That was the night we knew this trio was built differently.",
+        date: "Midnight Chronicles",
+        reactions: { fire: 24, laugh: 15 }
+      }
+    ];
+
+    const DEFAULT_TRIVIA = [
+      {
+        id: 1,
+        category: "Who Said This..?",
+        prompt: "\"I swear I will only talk for two minutes, I have an early morning tomorrow.\" (Proceeded to talk for 2 hours and 40 minutes)",
+        answer: "Blessing",
+        context: "Blessing called to share one quick update and ended up giving a full masterclass on life and unpacking every single event of the month!",
+        author: "Ayebatonte",
+        votes: { Kenneth: 2, Blessing: 18, Ayebatonte: 1 }
+      },
+      {
+        id: 2,
+        category: "Who Said This..?",
+        prompt: "\"Hear me out: if we structure this properly, we can conquer this whole field by next Tuesday.\"",
+        answer: "Kenneth",
+        context: "Classic Kenneth turning an innocent observation into a full multi-tier strategic blueprint with unmatched energy.",
+        author: "Ayebatonte",
+        votes: { Kenneth: 21, Blessing: 0, Ayebatonte: 1 }
+      },
+      {
+        id: 3,
+        category: "Who Did This..?",
+        prompt: "Who silently listened to an entire 45-minute debate without saying a word, and then dropped one sentence that settled everything?",
+        answer: "Ayebatonte",
+        context: "Ayebatonte let Kenneth and Blessing debate for almost an hour, then delivered one gentle truth bomb that ended the whole argument instantly.",
+        author: "Kenneth",
+        votes: { Kenneth: 1, Blessing: 2, Ayebatonte: 23 }
+      },
+      {
+        id: 4,
+        category: "Most Likely To...",
+        prompt: "Most likely to accidentally start a full philosophical debate while ordering food?",
+        answer: "Kenneth",
+        context: "Kenneth will start asking the cashier about their life philosophy and destiny before paying for the meal.",
+        author: "Blessing",
+        votes: { Kenneth: 19, Blessing: 3, Ayebatonte: 0 }
+      },
+      {
+        id: 5,
+        category: "Most Likely To...",
+        prompt: "Most likely to fiercely defend the other two members in public even if they were 50% wrong?",
+        answer: "Blessing",
+        context: "Blessing's protective loyalty is legendary. Attack one of us, and Blessing's royal aura turns into a shield wall.",
+        author: "Kenneth",
+        votes: { Kenneth: 2, Blessing: 24, Ayebatonte: 1 }
+      },
+      {
+        id: 6,
+        category: "Would You Rather...",
+        prompt: "Would you rather Kenneth give you a 4-hour lecture on geopolitics, or Blessing give you a 4-hour review of your life decisions?",
+        answer: "The Trio",
+        context: "Both options will test your mental endurance and leave you laughing through the tears!",
+        author: "Ayebatonte",
+        options: ["Kenneth's 4-Hour Masterclass", "Blessing's Life Audit"],
+        votes: { opt1: 12, opt2: 15 }
+      },
+      {
+        id: 7,
+        category: "Squad Deep Trivia",
+        prompt: "What is the official unofficial time of day when our group calls usually reach peak intellectual and comedic chaos?",
+        answer: "Between 1:30 AM and 3:30 AM",
+        context: "Science cannot explain why our best ideas and wildest laughs happen in the dead of the night.",
+        author: "Ayebatonte",
+        votes: {}
+      }
+    ];
+
+    const DEFAULT_JUKEBOX_TRACKS = [
+      {
+        id: 1,
+        title: "Asake - Lonely At The Top",
+        url: "https://open.spotify.com/track/4T695GrB2qcuwhbKwhsJae",
+        embed: "https://open.spotify.com/embed/track/4T695GrB2qcuwhbKwhsJae?utm_source=generator",
+        author: "Kenneth",
+        note: "Kenneth's supreme anthem on focus, discipline, and keeping our circle tight and loyal.",
+        loves: 31
+      },
+      {
+        id: 2,
+        title: "SZA - Snooze",
+        url: "https://open.spotify.com/track/4iZ4mst790ZCrSV48Qvhkr",
+        embed: "https://open.spotify.com/embed/track/4iZ4mst790ZCrSV48Qvhkr?utm_source=generator",
+        author: "Blessing",
+        note: "Blessing's signature royal vibe. Lush melodies and soulful warmth that always lifts the squad mood.",
+        loves: 27
+      },
+      {
+        id: 3,
+        title: "Burna Boy - Last Last",
+        url: "https://open.spotify.com/track/4VpLzU3bXoR1O1mX36Z72N",
+        embed: "https://open.spotify.com/embed/track/4VpLzU3bXoR1O1mX36Z72N?utm_source=generator",
+        author: "Kenneth",
+        note: "Unanimous car anthem. Windows down, maximum singing volume, zero shame.",
+        loves: 39
+      },
+      {
+        id: 4,
+        title: "Rema - Calm Down",
+        url: "https://open.spotify.com/track/0WtM2NBVQNNJLh6scP13H8",
+        embed: "https://open.spotify.com/embed/track/0WtM2NBVQNNJLh6scP13H8?utm_source=generator",
+        author: "Blessing",
+        note: "Instant dancing and infectious energy that always breaks whatever stress we were feeling.",
+        loves: 35
+      },
+      {
+        id: 5,
+        title: "J. Cole - Love Yourz",
+        url: "https://open.spotify.com/track/4gkl7y24U4pX3G7CjW7sY1",
+        embed: "https://open.spotify.com/embed/track/4gkl7y24U4pX3G7CjW7sY1?utm_source=generator",
+        author: "Ayebatonte",
+        note: "The song that encapsulates gratitude. No such thing as a life that's better than yours when you have your people.",
+        loves: 44
+      }
+    ];
+
+    /* --- App State Initialization with LocalStorage --- */
+    let memories = JSON.parse(localStorage.getItem('trio_memories')) || DEFAULT_MEMORIES;
+    let lore = JSON.parse(localStorage.getItem('trio_lore')) || DEFAULT_LORE;
+    let triviaQuestions = JSON.parse(localStorage.getItem('trio_trivia')) || DEFAULT_TRIVIA;
+    let recs = JSON.parse(localStorage.getItem('trio_recs')) || DEFAULT_RECS;
+    let jukeboxTracks = JSON.parse(localStorage.getItem('trio_jukebox')) || DEFAULT_JUKEBOX_TRACKS;
+
+    let cheers = JSON.parse(localStorage.getItem('trio_cheers')) || {
+      Kenneth: 142,
+      Blessing: 188,
+      Ayebatonte: 164
+    };
+
+    let triviaScore = parseInt(localStorage.getItem('trio_trivia_score')) || 0;
+    let currentTriviaIndex = 0;
+    let currentTriviaCategory = "Who Said This..?";
+    let activeRecType = "all";
+    let activeRecAuthor = "all";
+    let activeRecStatus = "all";
+    let recSearchQuery = "";
+
+    let currentSpotifyStationKey = "latenight";
+    let currentActiveTrackId = null;
+    let jukeboxFilterAuthor = "all";
+    let jukeboxSearchQuery = "";
+
+    /* --- Tab Navigation --- */
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      const targetSec = document.getElementById(tabId);
+      if (targetSec) targetSec.classList.add('active');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      const map = {
+        'tab-miniworld': 'nav-btn-miniworld',
+        'tab-vault': 'nav-btn-vault',
+        'tab-dashboard': 'nav-btn-dashboard',
+        'tab-lore': 'nav-btn-lore',
+        'tab-trivia': 'nav-btn-trivia'
+      };
+      if (map[tabId]) {
+        document.getElementById(map[tabId])?.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (tabId === 'tab-vault') renderVault();
+      if (tabId === 'tab-dashboard') { renderRecs(); renderJukebox(); }
+      if (tabId === 'tab-lore') renderLore();
+      if (tabId === 'tab-trivia') renderTriviaCard();
+    }
+
+    /* --- Cheers & Loving Toast --- */
+    function addCheer(person) {
+      if (!cheers[person]) cheers[person] = 0;
+      cheers[person]++;
+      localStorage.setItem('trio_cheers', JSON.stringify(cheers));
+
+      const elMap = {
+        Kenneth: 'cheer-count-ken',
+        Blessing: 'cheer-count-ble',
+        Ayebatonte: 'cheer-count-aye'
+      };
+      const iconMap = { Kenneth: '⚡', Blessing: '👑', Ayebatonte: '✨' };
+
+      const el = document.getElementById(elMap[person]);
+      if (el) el.textContent = `${iconMap[person]} ${cheers[person]} Cheers`;
+
+      triggerConfetti();
+      showToast(`Cheered for ${person}! (${cheers[person]})`, iconMap[person]);
+    }
+
+    function showLove(name) {
+      addCheer(name);
+    }
+
+    /* --- Modals Handling --- */
+    function openModal(modalId) {
+      const m = document.getElementById(modalId);
+      if (m) m.classList.add('open');
+    }
+
+    function closeModal(modalId) {
+      const m = document.getElementById(modalId);
+      if (m) m.classList.remove('open');
+    }
+
+    function handleModalBgClick(e, modalId) {
+      if (e.target.id === modalId) {
+        closeModal(modalId);
+      }
+    }
+
+    function openLetterModal() { openModal('modal-letter'); }
+    function openUploadModal() { openModal('modal-upload'); }
+    function openAddTriviaModal() { openModal('modal-trivia'); }
+    function openAddLoreModal() { openModal('modal-lore'); }
+    function openAddRecModal() { openModal('modal-rec'); }
+    function openAddSongModal() { openModal('modal-song'); }
+
+    /* --- Memory Vault Engine --- */
+    let currentVaultFilter = 'all';
+
+    function renderVault(filter = currentVaultFilter) {
+      currentVaultFilter = filter;
+      const grid = document.getElementById('vault-grid');
+      if (!grid) return;
+
+      const filtered = memories.filter(m => {
+        if (filter === 'all') return true;
+        return m.tag === filter;
+      });
+
+      grid.innerHTML = '';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px 20px; color: var(--text-dim);">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">📸</div>
+            <p style="font-size: 1.1rem; color: #fff; font-weight: 600;">No memories archived under this tag yet.</p>
+            <p style="font-size: 0.85rem; margin-top: 4px;">Tap "+ Add Memory" to archive your first snapshot!</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'glass';
+        card.style.overflow = 'hidden';
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+
+        const tagColorMap = {
+          'Kenneth': 'color: #fde047; border-color: rgba(251,191,36,0.4);',
+          'Blessing': 'color: #f472b6; border-color: rgba(224,38,192,0.4);',
+          'Ayebatonte': 'color: #d8b4fe; border-color: rgba(168,85,247,0.4);',
+          'The Trio': 'color: var(--neon-cyan); border-color: rgba(56,189,248,0.4);'
+        };
+
+        const tagStyle = tagColorMap[m.tag] || 'color: #fff; border-color: rgba(255,255,255,0.2);';
+
+        card.innerHTML = `
+          <div style="width: 100%; height: 200px; overflow: hidden; background: #160b26; position: relative;">
+            <img src="${m.img}" alt="${escapeHtml(m.title)}" style="width: 100%; height: 100%; object-object: cover; object-position: center; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+            <span class="tag-pill" style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px); ${tagStyle}">
+              ${escapeHtml(m.tag)}
+            </span>
+          </div>
+          <div style="padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff;">${escapeHtml(m.title)}</h4>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
+                ${escapeHtml(m.caption)}
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px;">
+              <span style="font-size: 0.75rem; color: var(--text-dim);">${escapeHtml(m.date || 'Timeless')}</span>
+              <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.78rem;" onclick="likeMemory(${m.id})">
+                ❤️ <span id="mem-hearts-${m.id}">${m.hearts || 1}</span>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterVault(tag) {
+      document.querySelectorAll('#filter-tag-all, #filter-tag-trio, #filter-tag-ble, #filter-tag-ken, #filter-tag-aye').forEach(btn => btn.classList.remove('active'));
+      const idMap = {
+        'all': 'filter-tag-all',
+        'The Trio': 'filter-tag-trio',
+        'Blessing': 'filter-tag-ble',
+        'Kenneth': 'filter-tag-ken',
+        'Ayebatonte': 'filter-tag-aye'
+      };
+      if (idMap[tag]) document.getElementById(idMap[tag])?.classList.add('active');
+      renderVault(tag);
+    }
+
+    function likeMemory(id) {
+      const mem = memories.find(m => m.id === id);
+      if (mem) {
+        mem.hearts = (mem.hearts || 0) + 1;
+        localStorage.setItem('trio_memories', JSON.stringify(memories));
+        const el = document.getElementById(`mem-hearts-${id}`);
+        if (el) el.textContent = mem.hearts;
+        triggerConfetti();
+        showToast('Loved this memory! ❤️', '📸');
+      }
+    }
+
+    function saveNewMemory() {
+      const title = document.getElementById('input-mem-title').value.trim();
+      const tag = document.getElementById('input-mem-tag').value;
+      const urlInput = document.getElementById('input-mem-url').value.trim();
+      const caption = document.getElementById('input-mem-caption').value.trim();
+      const fileInput = document.getElementById('input-mem-file');
+
+      if (!title || !caption) {
+        alert('Please provide a title and a caption for the memory.');
+        return;
+      }
+
+      function commit(imgUrl) {
+        const newMem = {
+          id: Date.now(),
+          title,
+          tag,
+          img: imgUrl || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+          caption,
+          date: "Just Now",
+          hearts: 1
+        };
+        memories.unshift(newMem);
+        localStorage.setItem('trio_memories', JSON.stringify(memories));
+        closeModal('modal-upload');
+        renderVault();
+        triggerConfetti();
+        showToast('Memory archived in the Vault!', '📸');
+
+        // Reset form
+        document.getElementById('input-mem-title').value = '';
+        document.getElementById('input-mem-url').value = '';
+        document.getElementById('input-mem-caption').value = '';
+        if (fileInput) fileInput.value = '';
+      }
+
+      if (fileInput && fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          commit(e.target.result);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        commit(urlInput || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80");
+      }
+    }
+
+    /* --- Squad Lore & Quotes Engine --- */
+    let currentLoreFilter = 'all';
+
+    function filterLore(tag) {
+      currentLoreFilter = tag;
+      document.querySelectorAll('#lore-filter-all, #lore-filter-laws, #lore-filter-quotes, #lore-filter-stories').forEach(btn => btn.classList.remove('active'));
+      const map = {
+        'all': 'lore-filter-all',
+        'laws': 'lore-filter-laws',
+        'quotes': 'lore-filter-quotes',
+        'stories': 'lore-filter-stories'
+      };
+      if (map[tag]) document.getElementById(map[tag])?.classList.add('active');
+
+      const lawsContainer = document.getElementById('laws-container');
+      const quotesSec = document.getElementById('lore-quotes-section');
+      const storiesSec = document.getElementById('lore-stories-section');
+
+      if (tag === 'all') {
+        if (lawsContainer) lawsContainer.style.display = 'block';
+        if (quotesSec) quotesSec.style.display = 'block';
+        if (storiesSec) storiesSec.style.display = 'block';
+      } else if (tag === 'laws') {
+        if (lawsContainer) lawsContainer.style.display = 'block';
+        if (quotesSec) quotesSec.style.display = 'none';
+        if (storiesSec) storiesSec.style.display = 'none';
+      } else if (tag === 'quotes') {
+        if (lawsContainer) lawsContainer.style.display = 'none';
+        if (quotesSec) quotesSec.style.display = 'block';
+        if (storiesSec) storiesSec.style.display = 'none';
+      } else if (tag === 'stories') {
+        if (lawsContainer) lawsContainer.style.display = 'none';
+        if (quotesSec) quotesSec.style.display = 'none';
+        if (storiesSec) storiesSec.style.display = 'block';
+      }
+    }
+
+    function renderLoreQuotes() {
+      const container = document.getElementById('quotes-grid');
+      if (!container) return;
+
+      const quotes = lore.filter(item => item.type === 'quote');
+      container.innerHTML = '';
+
+      quotes.forEach(q => {
+        const card = document.createElement('div');
+        const spk = q.speaker.toLowerCase();
+        const cardClass = spk.includes('ken') ? 'ken' : (spk.includes('ble') ? 'ble' : 'aye');
+        card.className = `glass quote-card ${cardClass}`;
+
+        const colorMap = {
+          Kenneth: 'var(--neon-gold)',
+          Blessing: 'var(--neon-magenta)',
+          Ayebatonte: 'var(--neon-purple)',
+          'The Trio': 'var(--neon-cyan)'
+        };
+
+        const color = colorMap[q.speaker] || '#fff';
+
+        card.innerHTML = `
+          <div>
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: ${color};">
+              ${escapeHtml(q.speaker)}
+            </span>
+            <p style="font-size: 1.05rem; font-style: italic; color: #fff; margin: 8px 0 14px; line-height: 1.55;">
+              "${escapeHtml(q.text)}"
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px;">
+            <span style="font-size: 0.75rem; color: var(--text-dim);">${escapeHtml(q.date || 'Legendary')}</span>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.75rem;" onclick="reactToLore(${q.id}, 'fire')">
+                🔥 ${q.reactions?.fire || 0}
+              </button>
+              <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.75rem;" onclick="reactToLore(${q.id}, 'laugh')">
+                😂 ${q.reactions?.laugh || 0}
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderLoreStories() {
+      const container = document.getElementById('stories-grid');
+      if (!container) return;
+
+      const stories = lore.filter(item => item.type === 'story');
+      container.innerHTML = '';
+
+      stories.forEach(s => {
+        const item = document.createElement('div');
+        item.className = 'glass';
+        item.style.padding = '22px 24px';
+
+        item.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+            <h4 style="font-size: 1.18rem; font-weight: 700; color: #fff;">${escapeHtml(s.title || 'Squad Chronicle')}</h4>
+            <span style="font-size: 0.78rem; color: var(--neon-cyan); background: rgba(56,189,248,0.1); padding: 2px 10px; border-radius: 9999px;">
+              ${escapeHtml(s.speaker || 'The Trio')} • ${escapeHtml(s.date || 'Archive')}
+            </span>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px;">
+            ${escapeHtml(s.text)}
+          </p>
+          <div style="display: flex; justify-content: flex-end; gap: 8px;">
+            <button class="btn btn-secondary" style="padding: 2px 10px; font-size: 0.78rem;" onclick="reactToLore(${s.id}, 'fire')">
+              🔥 ${s.reactions?.fire || 0}
+            </button>
+            <button class="btn btn-secondary" style="padding: 2px 10px; font-size: 0.78rem;" onclick="reactToLore(${s.id}, 'laugh')">
+              😂 ${s.reactions?.laugh || 0}
+            </button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function renderLore() {
+      renderLoreQuotes();
+      renderLoreStories();
+    }
+
+    function reactToLore(id, type) {
+      const entry = lore.find(l => l.id === id);
+      if (entry) {
+        if (!entry.reactions) entry.reactions = { fire: 0, laugh: 0 };
+        entry.reactions[type] = (entry.reactions[type] || 0) + 1;
+        localStorage.setItem('trio_lore', JSON.stringify(lore));
+        renderLore();
+        triggerConfetti();
+      }
+    }
+
+    function saveNewLoreEntry() {
+      const type = document.getElementById('input-lore-type').value;
+      const title = document.getElementById('input-lore-title').value.trim();
+      const text = document.getElementById('input-lore-text').value.trim();
+      const person = document.getElementById('input-lore-person').value;
+
+      if (!text) {
+        alert('Please provide the quote or story content.');
+        return;
+      }
+
+      const newEntry = {
+        id: Date.now(),
+        type,
+        title: type === 'story' ? title : '',
+        speaker: type === 'quote' ? title : person,
+        text,
+        date: "Just Documented",
+        reactions: { fire: 1, laugh: 1 }
+      };
+
+      lore.unshift(newEntry);
+      localStorage.setItem('trio_lore', JSON.stringify(lore));
+      closeModal('modal-lore');
+      renderLore();
+      triggerConfetti();
+      showToast('Lore documented in the Archives!', '📜');
+
+      document.getElementById('input-lore-title').value = '';
+      document.getElementById('input-lore-text').value = '';
+    }
+
+    /* --- Squad Trivia & Challenge Arena Engine --- */
+    function getQuestionsForCategory(cat) {
+      return triviaQuestions.filter(q => q.category === cat);
+    }
+
+    function selectTriviaCategory(cat) {
+      currentTriviaCategory = cat;
+      currentTriviaIndex = 0;
+
+      document.querySelectorAll('#cat-pill-said, #cat-pill-did, #cat-pill-likely, #cat-pill-rather, #cat-pill-deep').forEach(btn => btn.classList.remove('active'));
+      const catMap = {
+        "Who Said This..?": "cat-pill-said",
+        "Who Did This..?": "cat-pill-did",
+        "Most Likely To...": "cat-pill-likely",
+        "Would You Rather...": "cat-pill-rather",
+        "Squad Deep Trivia": "cat-pill-deep"
+      };
+      if (catMap[cat]) {
+        document.getElementById(catMap[cat])?.classList.add('active');
+      }
+
+      renderTriviaCard();
+    }
+
+    function renderTriviaCard() {
+      const questions = getQuestionsForCategory(currentTriviaCategory);
+      const total = questions.length;
+
+      const scoreEl = document.getElementById('trivia-score-counter');
+      const qNumEl = document.getElementById('trivia-q-num');
+      const qTotalEl = document.getElementById('trivia-q-total');
+      const catBadge = document.getElementById('trivia-cat-badge');
+      const promptContainer = document.getElementById('trivia-prompt-container');
+      const choicesContainer = document.getElementById('trivia-choices-container');
+      const feedbackBox = document.getElementById('trivia-feedback-box');
+
+      if (scoreEl) scoreEl.textContent = triviaScore;
+      if (catBadge) catBadge.textContent = currentTriviaCategory;
+
+      if (feedbackBox) {
+        feedbackBox.style.display = 'none';
+        feedbackBox.innerHTML = '';
+      }
+
+      if (total === 0) {
+        if (qNumEl) qNumEl.textContent = '0';
+        if (qTotalEl) qTotalEl.textContent = '0';
+        if (promptContainer) {
+          promptContainer.innerHTML = `
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">🎯</div>
+            <p style="font-size: 1.1rem; color: #fff; font-weight: 600;">No questions in this category yet!</p>
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 4px;">Click "+ Create Question" below to add the first challenge for ${currentTriviaCategory}.</p>
+          `;
+        }
+        if (choicesContainer) choicesContainer.innerHTML = '';
+        return;
+      }
+
+      if (currentTriviaIndex >= total) {
+        currentTriviaIndex = 0;
+      }
+
+      const q = questions[currentTriviaIndex];
+      if (qNumEl) qNumEl.textContent = (currentTriviaIndex + 1);
+      if (qTotalEl) qTotalEl.textContent = total;
+
+      const srcBadge = document.getElementById('trivia-source-badge');
+      if (srcBadge) {
+        srcBadge.textContent = q.author ? `Created by ${q.author}` : 'Trio Lore';
+      }
+
+      // Render Prompt View
+      if (promptContainer) {
+        promptContainer.innerHTML = `
+          <div style="font-size: 1.25rem; font-weight: 600; color: #fff; line-height: 1.6; max-width: 620px;">
+            ${escapeHtml(q.prompt)}
+          </div>
+        `;
+      }
+
+      // Render Interactive Choices based on Category type
+      if (!choicesContainer) return;
+      choicesContainer.innerHTML = '';
+
+      if (q.category === "Who Said This..?" || q.category === "Who Did This..?") {
+        const trioMembers = [
+          { name: "Kenneth", icon: "⚡", cls: "selected-ken" },
+          { name: "Blessing", icon: "👑", cls: "selected-ble" },
+          { name: "Ayebatonte", icon: "✨", cls: "selected-aye" }
+        ];
+
+        trioMembers.forEach(mem => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.innerHTML = `
+            <span style="font-size: 1.5rem;">${mem.icon}</span>
+            <span>${mem.name}</span>
+          `;
+          btn.onclick = () => checkTriviaGuess(mem.name, q.answer);
+          choicesContainer.appendChild(btn);
+        });
+      } else if (q.category === "Most Likely To...") {
+        const candidates = [
+          { name: "Kenneth", icon: "⚡" },
+          { name: "Blessing", icon: "👑" },
+          { name: "Ayebatonte", icon: "✨" }
+        ];
+
+        candidates.forEach(c => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.innerHTML = `
+            <span style="font-size: 1.5rem;">${c.icon}</span>
+            <span>Vote: ${c.name}</span>
+          `;
+          btn.onclick = () => castMostLikelyVote(c.name);
+          choicesContainer.appendChild(btn);
+        });
+      } else if (q.category === "Would You Rather...") {
+        const opts = q.options && q.options.length >= 2 ? q.options : ["Kenneth's Theory", "Blessing's Advice"];
+        opts.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'choice-btn';
+          btn.style.maxWidth = '300px';
+          btn.innerHTML = `
+            <span style="font-size: 1.2rem;">${idx === 0 ? '🅰️' : '🅱️'}</span>
+            <span style="font-size: 0.95rem;">${escapeHtml(opt)}</span>
+          `;
+          btn.onclick = () => castWouldRatherVote(idx === 0 ? 'opt1' : 'opt2');
+          choicesContainer.appendChild(btn);
+        });
+      } else if (q.category === "Squad Deep Trivia") {
+        const btnReveal = document.createElement('button');
+        btnReveal.className = 'btn btn-primary';
+        btnReveal.style.padding = '12px 26px';
+        btnReveal.style.fontSize = '1rem';
+        btnReveal.innerHTML = `<span>🔍 Reveal Answer & Lore</span>`;
+        btnReveal.onclick = () => revealDeepTriviaAnswer(q.answer, q.context);
+        choicesContainer.appendChild(btnReveal);
+      }
+
+      renderCustomTriviaList();
+    }
+
+    function checkTriviaGuess(selected, correct) {
+      const questions = getQuestionsForCategory(currentTriviaCategory);
+      const q = questions[currentTriviaIndex];
+      const feedbackBox = document.getElementById('trivia-feedback-box');
+      if (!feedbackBox) return;
+
+      const isCorrect = (selected.toLowerCase() === (correct || '').toLowerCase()) || (correct === 'The Trio');
+
+      if (isCorrect) {
+        triviaScore += 10;
+        localStorage.setItem('trio_trivia_score', triviaScore);
+        const scoreEl = document.getElementById('trivia-score-counter');
+        if (scoreEl) scoreEl.textContent = triviaScore;
+        triggerConfetti();
+      }
+
+      feedbackBox.style.display = 'block';
+      feedbackBox.style.border = isCorrect ? '1px solid #10b981' : '1px solid #f43f5e';
+      feedbackBox.style.background = isCorrect ? 'rgba(16, 185, 129, 0.12)' : 'rgba(244, 63, 94, 0.12)';
+
+      feedbackBox.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <span style="font-size: 1.3rem;">${isCorrect ? '🎉' : '😅'}</span>
+          <span style="font-weight: 700; color: #fff; font-size: 1.05rem;">
+            ${isCorrect ? 'Spot On! That was ' + correct + '!' : 'Not quite! The correct answer was ' + correct + '!'}
+          </span>
+        </div>
+        <p style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.5;">
+          ${escapeHtml(q.context || 'Classic squad history right here!')}
+        </p>
+      `;
+
+      showToast(isCorrect ? '+10 Squad IQ Points!' : 'Good try!', isCorrect ? '🎯' : '💡');
+    }
+
+    function revealDeepTriviaAnswer(answer, context) {
+      const feedbackBox = document.getElementById('trivia-feedback-box');
+      if (!feedbackBox) return;
+
+      feedbackBox.style.display = 'block';
+      feedbackBox.style.border = '1px solid var(--neon-cyan)';
+      feedbackBox.style.background = 'rgba(56, 189, 248, 0.12)';
+
+      feedbackBox.innerHTML = `
+        <div style="font-weight: 700; color: #38bdf8; font-size: 1.1rem; margin-bottom: 6px;">
+          💡 Answer: ${escapeHtml(answer || 'The Unwritten Lore')}
+        </div>
+        <p style="font-size: 0.92rem; color: #f1f5f9; line-height: 1.55;">
+          ${escapeHtml(context || 'Part of the sacred trio chronicles.')}
+        </p>
+      `;
+      triggerConfetti();
+    }
+
+    function castMostLikelyVote(person) {
+      const questions = getQuestionsForCategory(currentTriviaCategory);
+      const q = questions[currentTriviaIndex];
+      if (!q.votes) q.votes = { Kenneth: 0, Blessing: 0, Ayebatonte: 0 };
+      q.votes[person] = (q.votes[person] || 0) + 1;
+      localStorage.setItem('trio_trivia', JSON.stringify(triviaQuestions));
+
+      const feedbackBox = document.getElementById('trivia-feedback-box');
+      if (feedbackBox) {
+        feedbackBox.style.display = 'block';
+        feedbackBox.style.border = '1px solid var(--neon-gold)';
+        feedbackBox.style.background = 'rgba(251, 191, 36, 0.1)';
+
+        feedbackBox.innerHTML = `
+          <div style="font-weight: 700; color: #fde047; font-size: 1.05rem; margin-bottom: 6px;">
+            🗳️ Vote Recorded for ${person}!
+          </div>
+          <div style="font-size: 0.88rem; color: #e2e8f0;">
+            Current Squad Tally: ⚡ Kenneth: <strong>${q.votes.Kenneth || 0}</strong> | 👑 Blessing: <strong>${q.votes.Blessing || 0}</strong> | ✨ Ayebatonte: <strong>${q.votes.Ayebatonte || 0}</strong>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-dim); margin-top: 6px;">
+            Context: ${escapeHtml(q.context || 'We all know this fits perfectly!')}
+          </div>
+        `;
+      }
+      triggerConfetti();
+      showToast(`Voted for ${person}!`, '🗳️');
+    }
+
+    function castWouldRatherVote(opt) {
+      const questions = getQuestionsForCategory(currentTriviaCategory);
+      const q = questions[currentTriviaIndex];
+      if (!q.votes) q.votes = { opt1: 0, opt2: 0 };
+      q.votes[opt] = (q.votes[opt] || 0) + 1;
+      localStorage.setItem('trio_trivia', JSON.stringify(triviaQuestions));
+
+      const feedbackBox = document.getElementById('trivia-feedback-box');
+      if (feedbackBox) {
+        feedbackBox.style.display = 'block';
+        feedbackBox.style.border = '1px solid var(--neon-magenta)';
+        feedbackBox.style.background = 'rgba(224, 38, 192, 0.12)';
+
+        feedbackBox.innerHTML = `
+          <div style="font-weight: 700; color: #f472b6; font-size: 1.05rem; margin-bottom: 6px;">
+            🤔 Vote Locked In!
+          </div>
+          <div style="font-size: 0.88rem; color: #e2e8f0;">
+            Option A: <strong>${q.votes.opt1 || 0} votes</strong> vs Option B: <strong>${q.votes.opt2 || 0} votes</strong>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-dim); margin-top: 6px;">
+            ${escapeHtml(q.context || 'A difficult decision only true friends can make!')}
+          </div>
+        `;
+      }
+      triggerConfetti();
+      showToast('Decision registered!', '🤔');
+    }
+
+    function nextTriviaQuestion() {
+      const questions = getQuestionsForCategory(currentTriviaCategory);
+      if (questions.length === 0) return;
+      currentTriviaIndex = (currentTriviaIndex + 1) % questions.length;
+      renderTriviaCard();
+    }
+
+    function randomTriviaQuestion() {
+      const allCats = ["Who Said This..?", "Who Did This..?", "Most Likely To...", "Would You Rather...", "Squad Deep Trivia"];
+      const randomCat = allCats[Math.floor(Math.random() * allCats.length)];
+      selectTriviaCategory(randomCat);
+      const qList = getQuestionsForCategory(randomCat);
+      if (qList.length > 0) {
+        currentTriviaIndex = Math.floor(Math.random() * qList.length);
+        renderTriviaCard();
+      }
+      showToast(`Surprise: ${randomCat}`, '🎲');
+    }
+
+    function toggleTriviaFormFields() {
+      const cat = document.getElementById('input-triv-cat').value;
+      const dynContainer = document.getElementById('dynamic-trivia-fields');
+      if (!dynContainer) return;
+
+      if (cat === "Who Said This..?" || cat === "Who Did This..?") {
+        dynContainer.innerHTML = `
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Target Squad Member</label>
+          <select id="input-triv-answer" class="input-field">
+            <option value="Kenneth">⚡ Kenneth</option>
+            <option value="Blessing">👑 Blessing</option>
+            <option value="Ayebatonte">✨ Ayebatonte</option>
+            <option value="The Trio">💫 All Three Of Us</option>
+          </select>
+        `;
+      } else if (cat === "Most Likely To...") {
+        dynContainer.innerHTML = `
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Default Consensus Choice (Optional)</label>
+          <select id="input-triv-answer" class="input-field">
+            <option value="Kenneth">⚡ Kenneth</option>
+            <option value="Blessing">👑 Blessing</option>
+            <option value="Ayebatonte">✨ Ayebatonte</option>
+          </select>
+        `;
+      } else if (cat === "Would You Rather...") {
+        dynContainer.innerHTML = `
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Option A</label>
+          <input type="text" id="input-triv-opt1" class="input-field" placeholder="e.g. Listen to Kenneth explain crypto for 2 hours" required />
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Option B</label>
+          <input type="text" id="input-triv-opt2" class="input-field" placeholder="e.g. Let Blessing organize your entire phone contacts" required />
+        `;
+      } else if (cat === "Squad Deep Trivia") {
+        dynContainer.innerHTML = `
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Expected Answer</label>
+          <input type="text" id="input-triv-answer" class="input-field" placeholder="e.g. 2:30 AM at the diner" required />
+        `;
+      }
+    }
+
+    function saveCustomTriviaQuestion() {
+      const cat = document.getElementById('input-triv-cat').value;
+      const prompt = document.getElementById('input-triv-prompt').value.trim();
+      const context = document.getElementById('input-triv-context').value.trim();
+      const author = document.getElementById('input-triv-author').value;
+
+      if (!prompt) {
+        alert('Please enter a question or quote scenario.');
+        return;
+      }
+
+      let answer = "The Trio";
+      let options = [];
+
+      if (cat === "Would You Rather...") {
+        const opt1 = document.getElementById('input-triv-opt1')?.value.trim() || 'Option A';
+        const opt2 = document.getElementById('input-triv-opt2')?.value.trim() || 'Option B';
+        options = [opt1, opt2];
+      } else {
+        const ansEl = document.getElementById('input-triv-answer');
+        if (ansEl) answer = ansEl.value.trim() || "The Trio";
+      }
+
+      const newQ = {
+        id: Date.now(),
+        category: cat,
+        prompt,
+        answer,
+        options,
+        context: context || "Documented by the squad.",
+        author,
+        votes: {}
+      };
+
+      triviaQuestions.unshift(newQ);
+      localStorage.setItem('trio_trivia', JSON.stringify(triviaQuestions));
+      closeModal('modal-trivia');
+      selectTriviaCategory(cat);
+      triggerConfetti();
+      showToast('Question added to Squad Trivia!', '🎯');
+
+      document.getElementById('input-triv-prompt').value = '';
+      document.getElementById('input-triv-context').value = '';
+    }
+
+    function renderCustomTriviaList() {
+      const container = document.getElementById('custom-trivia-list');
+      if (!container) return;
+
+      const userQuestions = triviaQuestions.filter(q => q.author);
+      container.innerHTML = '';
+
+      if (userQuestions.length === 0) {
+        container.innerHTML = `
+          <div style="font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px;">
+            No custom questions added yet. Be the first to create one!
+          </div>
+        `;
+        return;
+      }
+
+      userQuestions.slice(0, 6).forEach(q => {
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.justifyContent = 'space-between';
+        row.style.alignItems = 'center';
+        row.style.padding = '8px 12px';
+        row.style.background = 'rgba(255,255,255,0.03)';
+        row.style.borderRadius = '8px';
+        row.style.fontSize = '0.85rem';
+
+        row.innerHTML = `
+          <div style="flex: 1; margin-right: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            <span style="color: var(--neon-cyan); font-weight: 600;">[${escapeHtml(q.category)}]</span>
+            <span style="color: #fff; margin-left: 6px;">${escapeHtml(q.prompt)}</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 0.75rem; color: var(--text-dim);">By ${escapeHtml(q.author)}</span>
+            <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.72rem;" onclick="playSpecificTrivia(${q.id}, '${escapeHtml(q.category)}')">
+              Play
+            </button>
+            <button style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.8rem;" onclick="deleteCustomTrivia(${q.id})">
+              ✕
+            </button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function playSpecificTrivia(id, cat) {
+      selectTriviaCategory(cat);
+      const qList = getQuestionsForCategory(cat);
+      const idx = qList.findIndex(item => item.id === id);
+      if (idx !== -1) {
+        currentTriviaIndex = idx;
+        renderTriviaCard();
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+      }
+    }
+
+    function deleteCustomTrivia(id) {
+      if (confirm('Delete this question from squad trivia?')) {
+        triviaQuestions = triviaQuestions.filter(q => q.id !== id);
+        localStorage.setItem('trio_trivia', JSON.stringify(triviaQuestions));
+        renderTriviaCard();
+        showToast('Question removed', '🗑️');
+      }
+    }
+
+    /* --- Toast Notification Utility --- */
+    let toastTimeout;
+    function showToast(msg, icon = '✓') {
+      const toast = document.getElementById('toast-alert');
+      if (!toast) return;
+      toast.innerHTML = `<span>${icon}</span> <span>${escapeHtml(msg)}</span>`;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    /* --- Recommendations Lounge Engine --- */
+    function filterRecType(type) {
+      activeRecType = type;
+      document.querySelectorAll('#rec-tab-all, #rec-tab-movie, #rec-tab-show, #rec-tab-book').forEach(btn => btn.classList.remove('active'));
+      const tabMap = { all: 'rec-tab-all', Movie: 'rec-tab-movie', Show: 'rec-tab-show', Book: 'rec-tab-book' };
+      if (tabMap[type]) {
+        document.getElementById(tabMap[type])?.classList.add('active');
+      }
+      renderRecs();
+    }
+
+    function filterRecAuthor(author) {
+      activeRecAuthor = author;
+      renderRecs();
+    }
+
+    function filterRecStatus(status) {
+      activeRecStatus = status;
+      renderRecs();
+    }
+
+    function handleRecSearch(query) {
+      recSearchQuery = (query || '').toLowerCase().trim();
+      renderRecs();
+    }
+
+    function renderRecs() {
+      const container = document.getElementById('recs-list');
+      if (!container) return;
+
+      const countAll = recs.length;
+      const countMovie = recs.filter(r => r.type === 'Movie').length;
+      const countShow = recs.filter(r => r.type === 'Show').length;
+      const countBook = recs.filter(r => r.type === 'Book').length;
+
+      const elAll = document.getElementById('count-all-recs');
+      const elMovie = document.getElementById('count-movie-recs');
+      const elShow = document.getElementById('count-show-recs');
+      const elBook = document.getElementById('count-book-recs');
+      if (elAll) elAll.textContent = countAll;
+      if (elMovie) elMovie.textContent = countMovie;
+      if (elShow) elShow.textContent = countShow;
+      if (elBook) elBook.textContent = countBook;
+
+      let filtered = recs.filter(r => {
+        if (activeRecType !== 'all' && r.type !== activeRecType) return false;
+        if (activeRecAuthor !== 'all' && r.author !== activeRecAuthor) return false;
+        if (activeRecStatus === 'todo' && r.done) return false;
+        if (activeRecStatus === 'done' && !r.done) return false;
+        if (recSearchQuery) {
+          const matchTitle = (r.title || '').toLowerCase().includes(recSearchQuery);
+          const matchVibe = (r.vibe || '').toLowerCase().includes(recSearchQuery);
+          const matchNote = (r.note || '').toLowerCase().includes(recSearchQuery);
+          const matchAuthor = (r.author || '').toLowerCase().includes(recSearchQuery);
+          if (!matchTitle && !matchVibe && !matchNote && !matchAuthor) return false;
+        }
+        return true;
+      });
+
+      const shownEl = document.getElementById('rec-shown-count');
+      if (shownEl) shownEl.textContent = filtered.length;
+
+      container.innerHTML = '';
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 32px 16px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1); color: var(--text-dim);">
+            <div style="font-size: 2rem; margin-bottom: 6px;">🍿</div>
+            <div style="font-weight: 600; font-size: 0.95rem; color: #fff;">No recommendations match this filter</div>
+            <div style="font-size: 0.8rem; margin-top: 4px;">Use the creation space on the right to recommend a movie, book, or show!</div>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(r => {
+        const item = document.createElement('div');
+        item.className = 'rec-card' + (r.done ? ' rec-completed' : '');
+
+        const typeClass = r.type === 'Movie' ? 'rec-type-movie' : (r.type === 'Show' ? 'rec-type-show' : 'rec-type-book');
+        const typeIcon = r.type === 'Movie' ? '🎬' : (r.type === 'Show' ? '📺' : '📚');
+        const authorColor = r.author === 'Kenneth' ? 'var(--neon-gold)' : (r.author === 'Blessing' ? 'var(--neon-magenta)' : (r.author === 'Ayebatonte' ? 'var(--neon-purple)' : '#38bdf8'));
+        const authorIcon = r.author === 'Kenneth' ? '⚡' : (r.author === 'Blessing' ? '👑' : (r.author === 'Ayebatonte' ? '✨' : '💫'));
+
+        item.innerHTML = `
+          <div style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 0;">
+            <input type="checkbox" ${r.done ? 'checked' : ''} onchange="toggleRec(${r.id})" style="cursor: pointer; width: 18px; height: 18px; margin-top: 3px; accent-color: var(--neon-magenta);" title="${r.done ? 'Mark uncompleted' : 'Mark completed'}" />
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+                <span class="rec-type-badge ${typeClass}">${typeIcon} ${r.type}</span>
+                <span style="font-size: 0.72rem; padding: 1px 7px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid ${authorColor}; color: ${authorColor}; font-weight: 600;">
+                  ${authorIcon} ${r.author}
+                </span>
+                ${r.vibe ? `<span style="font-size: 0.72rem; color: #38bdf8; background: rgba(56,189,248,0.1); padding: 1px 6px; border-radius: 4px;">${escapeHtml(r.vibe)}</span>` : ''}
+                ${r.done ? '<span style="font-size: 0.72rem; color: #10b981; font-weight: bold;">✓ Completed</span>' : ''}
+              </div>
+              <div style="font-size: 0.96rem; font-weight: 700; color: ${r.done ? 'var(--text-dim)' : '#fff'}; text-decoration: ${r.done ? 'line-through' : 'none'}; line-height: 1.35; margin-bottom: 4px;">
+                ${escapeHtml(r.title)}
+              </div>
+              ${r.note ? `<p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; font-style: italic; margin-top: 3px;">"${escapeHtml(r.note)}"</p>` : ''}
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0; margin-left: 8px;">
+            <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.76rem; border-color: rgba(244,114,182,0.3); color: #f472b6;" onclick="loveRec(${r.id})" title="Squad Love">
+              ❤️ ${r.loves || 1}
+            </button>
+            <button class="btn btn-secondary" style="padding: 4px 7px; font-size: 0.76rem; color: #ef4444;" onclick="deleteRec(${r.id})" title="Remove Recommendation">
+              ✕
+            </button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function toggleRec(id) {
+      const r = recs.find(item => item.id === id);
+      if (r) {
+        r.done = !r.done;
+        localStorage.setItem('trio_recs', JSON.stringify(recs));
+        renderRecs();
+        if (r.done) {
+          triggerConfetti();
+          showToast(`Completed "${r.title}"!`, '🎉');
+        } else {
+          showToast(`Moved "${r.title}" to To Watch / Read`, '⏳');
+        }
+      }
+    }
+
+    function loveRec(id) {
+      const r = recs.find(item => item.id === id);
+      if (r) {
+        r.loves = (r.loves || 1) + 1;
+        localStorage.setItem('trio_recs', JSON.stringify(recs));
+        renderRecs();
+        triggerConfetti();
+        showToast(`Loved "${r.title}"!`, '❤️');
+      }
+    }
+
+    function deleteRec(id) {
+      const r = recs.find(item => item.id === id);
+      const title = r ? r.title : 'this title';
+      if (confirm(`Remove "${title}" from squad recommendations?`)) {
+        recs = recs.filter(item => item.id !== id);
+        localStorage.setItem('trio_recs', JSON.stringify(recs));
+        renderRecs();
+        showToast(`Removed from recommendations`, '🗑️');
+      }
+    }
+
+    function saveInlineRecommendation() {
+      const titleInput = document.getElementById('inline-rec-title');
+      const typeInput = document.getElementById('inline-rec-type');
+      const authorInput = document.getElementById('inline-rec-author');
+      const vibeInput = document.getElementById('inline-rec-vibe');
+      const noteInput = document.getElementById('inline-rec-note');
+
+      const title = titleInput ? titleInput.value.trim() : '';
+      const type = typeInput ? typeInput.value : 'Movie';
+      const author = authorInput ? authorInput.value : 'Kenneth';
+      const vibe = vibeInput ? vibeInput.value.trim() : 'Must-Watch';
+      const note = noteInput ? noteInput.value.trim() : 'Recommended for our squad sessions.';
+
+      if (!title) {
+        alert('Please enter the title of the movie, book, or show.');
+        titleInput?.focus();
+        return;
+      }
+
+      const newRec = {
+        id: Date.now(),
+        title,
+        type,
+        author,
+        vibe: vibe || (type === 'Book' ? 'Inspiring Read' : (type === 'Show' ? 'Must-Watch Series' : 'Cinema Masterpiece')),
+        note: note || 'Added to our squad recommendations!',
+        done: false,
+        loves: 1
+      };
+
+      recs.unshift(newRec);
+      localStorage.setItem('trio_recs', JSON.stringify(recs));
+
+      if (titleInput) titleInput.value = '';
+      if (vibeInput) vibeInput.value = '';
+      if (noteInput) noteInput.value = '';
+
+      renderRecs();
+      triggerConfetti();
+      showToast(`Added "${title}" to Squad Recommendations!`, '🍿');
+    }
+
+    function saveNewRecommendation() {
+      const type = document.getElementById('input-rec-type').value;
+      const title = document.getElementById('input-rec-title').value.trim();
+      const author = document.getElementById('input-rec-author').value;
+      const vibe = document.getElementById('input-rec-vibe').value.trim();
+      const note = document.getElementById('input-rec-note').value.trim();
+
+      if (!title) {
+        alert('Please enter the title of the movie, book, or show.');
+        return;
+      }
+
+      const newRec = {
+        id: Date.now(),
+        title,
+        type,
+        author,
+        vibe: vibe || (type === 'Book' ? 'Inspiring Read' : (type === 'Show' ? 'Must-Watch Series' : 'Cinema Masterpiece')),
+        note: note || 'Added to our squad recommendations!',
+        done: false,
+        loves: 1
+      };
+
+      recs.unshift(newRec);
+      localStorage.setItem('trio_recs', JSON.stringify(recs));
+      closeModal('modal-rec');
+      renderRecs();
+      triggerConfetti();
+      showToast(`Added "${title}" to Recommendations!`, '🍿');
+
+      document.getElementById('input-rec-title').value = '';
+      document.getElementById('input-rec-vibe').value = '';
+      document.getElementById('input-rec-note').value = '';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    /* --- Spotify Soundtrack & Squad Jukebox Engine --- */
+    function parseSpotifyEmbedUrl(rawUrl) {
+      if (!rawUrl) return null;
+      let url = rawUrl.trim();
+      if (url.includes('open.spotify.com/embed/')) return url;
+      if (url.includes('open.spotify.com/track/')) {
+        const parts = url.split('track/')[1].split('?')[0];
+        return `https://open.spotify.com/embed/track/${parts}?utm_source=generator`;
+      }
+      if (url.includes('open.spotify.com/playlist/')) {
+        const parts = url.split('playlist/')[1].split('?')[0];
+        return `https://open.spotify.com/embed/playlist/${parts}?utm_source=generator&theme=0`;
+      }
+      if (url.includes('open.spotify.com/album/')) {
+        const parts = url.split('album/')[1].split('?')[0];
+        return `https://open.spotify.com/embed/album/${parts}?utm_source=generator`;
+      }
+      return url;
+    }
+
+    function copyCurrentStationLink() {
+      let targetUrl = 'https://open.spotify.com';
+      let targetName = 'Squad Station';
+
+      if (currentActiveTrackId) {
+        const tr = jukeboxTracks.find(t => t.id === currentActiveTrackId);
+        if (tr && tr.url) {
+          targetUrl = tr.url;
+          targetName = tr.title;
+        }
+      } else if (DEFAULT_SPOTIFY_STATIONS[currentSpotifyStationKey]) {
+        targetUrl = DEFAULT_SPOTIFY_STATIONS[currentSpotifyStationKey].url;
+        targetName = DEFAULT_SPOTIFY_STATIONS[currentSpotifyStationKey].name;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(targetUrl).then(() => {
+          showToast(`Copied link for ${targetName}!`, '📋');
+        }).catch(() => {
+          showToast(`Link: ${targetUrl}`, '📋');
+        });
+      } else {
+        showToast(`Spotify Link: ${targetUrl}`, '📋');
+      }
+    }
+
+    function copySpotifyTrackLink(url, title) {
+      if (!url) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast(`Copied link for "${title}"!`, '📋');
+        }).catch(() => {
+          showToast(`Copied: ${url}`, '📋');
+        });
+      } else {
+        showToast(`Spotify Link: ${url}`, '📋');
+      }
+    }
+
+    function handleJukeboxSearch(query) {
+      jukeboxSearchQuery = (query || '').toLowerCase().trim();
+      renderJukebox();
+    }
+
+    function switchSpotifyStation(key) {
+      const station = DEFAULT_SPOTIFY_STATIONS[key];
+      if (!station) return;
+      currentSpotifyStationKey = key;
+      currentActiveTrackId = null;
+
+      document.querySelectorAll('.spotify-station-pill').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`station-${key}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const iframe = document.getElementById('spotify-iframe');
+      if (iframe) iframe.src = station.embed;
+
+      const tagEl = document.getElementById('current-station-tag');
+      if (tagEl) tagEl.textContent = station.tag;
+
+      const curatorEl = document.getElementById('current-curator-badge');
+      if (curatorEl) curatorEl.textContent = station.curator;
+
+      const titleEl = document.getElementById('current-anthem-title');
+      if (titleEl) titleEl.textContent = `"${station.anthem}"`;
+
+      const descEl = document.getElementById('current-anthem-desc');
+      if (descEl) descEl.textContent = station.desc;
+
+      const subEl = document.getElementById('current-active-note-sub');
+      if (subEl) subEl.textContent = 'Live Spotify Station Stream';
+
+      const statusBadge = document.getElementById('player-status-badge');
+      if (statusBadge) {
+        statusBadge.innerHTML = `<span style="width: 8px; height: 8px; border-radius: 50%; background: #1db954; box-shadow: 0 0 6px #1db954;"></span> Live: ${escapeHtml(station.name)}`;
+      }
+
+      renderJukebox();
+      triggerConfetti();
+      showToast(`Loaded "${station.name}" into player`, '💿');
+    }
+
+    function openAddSongModal() {
+      openModal('modal-song');
+    }
+
+    function saveNewSong() {
+      const title = document.getElementById('input-song-title').value.trim();
+      const rawUrl = document.getElementById('input-song-url').value.trim();
+      const author = document.getElementById('input-song-author').value;
+      const note = document.getElementById('input-song-note').value.trim();
+
+      if (!title || !rawUrl) {
+        alert('Please enter the song title and a valid Spotify URL.');
+        return;
+      }
+
+      const embedUrl = parseSpotifyEmbedUrl(rawUrl);
+
+      const newTrack = {
+        id: Date.now(),
+        title,
+        url: rawUrl,
+        embed: embedUrl,
+        author,
+        note: note || `Added with squad love by ${author}.`,
+        loves: 1
+      };
+
+      jukeboxTracks.unshift(newTrack);
+      localStorage.setItem('trio_jukebox', JSON.stringify(jukeboxTracks));
+      closeModal('modal-song');
+      renderJukebox();
+      triggerConfetti();
+      showToast(`Added "${title}" to Jukebox!`, '🎵');
+
+      document.getElementById('input-song-title').value = '';
+      document.getElementById('input-song-url').value = '';
+      document.getElementById('input-song-note').value = '';
+    }
+
+    function playTrackInEmbed(trackId) {
+      const track = jukeboxTracks.find(t => t.id === trackId);
+      if (!track) return;
+
+      currentActiveTrackId = trackId;
+      const iframe = document.getElementById('spotify-iframe');
+      if (iframe && track.embed) {
+        iframe.src = track.embed;
+      }
+
+      const tagEl = document.getElementById('current-station-tag');
+      if (tagEl) tagEl.textContent = `Jukebox: ${track.author}`;
+
+      const curatorEl = document.getElementById('current-curator-badge');
+      if (curatorEl) curatorEl.textContent = `Added by ${track.author}`;
+
+      const titleEl = document.getElementById('current-anthem-title');
+      if (titleEl) titleEl.textContent = `"${track.title}"`;
+
+      const descEl = document.getElementById('current-anthem-desc');
+      if (descEl) descEl.textContent = track.note;
+
+      const subEl = document.getElementById('current-active-note-sub');
+      if (subEl) subEl.textContent = `Squad Jukebox • ${track.author}'s Pick`;
+
+      const statusBadge = document.getElementById('player-status-badge');
+      if (statusBadge) {
+        statusBadge.innerHTML = `<span style="width: 8px; height: 8px; border-radius: 50%; background: #1db954; box-shadow: 0 0 6px #1db954;"></span> Playing: ${escapeHtml(track.title)}`;
+      }
+
+      document.querySelectorAll('.spotify-station-pill').forEach(btn => btn.classList.remove('active'));
+
+      renderJukebox();
+      triggerConfetti();
+      showToast(`Playing "${track.title}" in player`, '🎧');
+    }
+
+    function loveJukeboxTrack(trackId) {
+      const track = jukeboxTracks.find(t => t.id === trackId);
+      if (track) {
+        track.loves = (track.loves || 1) + 1;
+        localStorage.setItem('trio_jukebox', JSON.stringify(jukeboxTracks));
+        renderJukebox();
+        triggerConfetti();
+        showToast(`Loved "${track.title}"!`, '❤️');
+      }
+    }
+
+    function deleteJukeboxTrack(trackId) {
+      const track = jukeboxTracks.find(t => t.id === trackId);
+      const title = track ? track.title : 'this track';
+      if (confirm(`Remove "${title}" from squad jukebox?`)) {
+        jukeboxTracks = jukeboxTracks.filter(t => t.id !== trackId);
+        localStorage.setItem('trio_jukebox', JSON.stringify(jukeboxTracks));
+        if (currentActiveTrackId === trackId) {
+          switchSpotifyStation('latenight');
+        } else {
+          renderJukebox();
+        }
+        showToast(`Removed from jukebox`, '🗑️');
+      }
+    }
+
+    function filterJukebox(author) {
+      jukeboxFilterAuthor = author;
+      document.querySelectorAll('#juke-filter-all, #juke-filter-ken, #juke-filter-ble, #juke-filter-aye').forEach(btn => btn.classList.remove('active-filter'));
+      const map = {
+        all: 'juke-filter-all',
+        Kenneth: 'juke-filter-ken',
+        Blessing: 'juke-filter-ble',
+        Ayebatonte: 'juke-filter-aye'
+      };
+      if (map[author]) document.getElementById(map[author])?.classList.add('active-filter');
+      renderJukebox();
+    }
+
+    function renderJukebox() {
+      const listContainer = document.getElementById('jukebox-tracks-list');
+      if (!listContainer) return;
+
+      const trackCountEl = document.getElementById('jukebox-track-count');
+      if (trackCountEl) trackCountEl.textContent = `${jukeboxTracks.length} Tracks`;
+
+      let filtered = jukeboxTracks.filter(t => {
+        if (jukeboxFilterAuthor !== 'all' && t.author !== jukeboxFilterAuthor) return false;
+        if (jukeboxSearchQuery) {
+          const matchTitle = (t.title || '').toLowerCase().includes(jukeboxSearchQuery);
+          const matchNote = (t.note || '').toLowerCase().includes(jukeboxSearchQuery);
+          const matchAuthor = (t.author || '').toLowerCase().includes(jukeboxSearchQuery);
+          if (!matchTitle && !matchNote && !matchAuthor) return false;
+        }
+        return true;
+      });
+
+      listContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div style="text-align: center; padding: 24px; color: var(--text-dim); background: rgba(255,255,255,0.02); border-radius: 10px;">
+            No tracks found matching this filter. Tap "+ Add Song / Spotify Link" above to share one!
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(t => {
+        const isCurrentlyActive = (currentActiveTrackId === t.id);
+        const row = document.createElement('div');
+        row.className = `track-row ${isCurrentlyActive ? 'now-playing-row' : ''}`;
+
+        const authorColor = t.author === 'Kenneth' ? 'var(--neon-gold)' : (t.author === 'Blessing' ? 'var(--neon-magenta)' : 'var(--neon-purple)');
+        const authorIcon = t.author === 'Kenneth' ? '⚡' : (t.author === 'Blessing' ? '👑' : '✨');
+
+        row.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;">
+            <button onclick="playTrackInEmbed(${t.id})" style="width: 38px; height: 38px; border-radius: 50%; background: ${isCurrentlyActive ? '#1db954' : 'rgba(255,255,255,0.08)'}; border: 1px solid ${isCurrentlyActive ? '#1db954' : 'rgba(255,255,255,0.2)'}; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; cursor: pointer; flex-shrink: 0; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'" title="Play in Player">
+              ${isCurrentlyActive ? '▶' : '♫'}
+            </button>
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span style="font-size: 0.95rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                  ${escapeHtml(t.title)}
+                </span>
+                <span style="font-size: 0.72rem; padding: 1px 8px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid ${authorColor}; color: ${authorColor}; font-weight: 600;">
+                  ${authorIcon} ${t.author}
+                </span>
+                ${isCurrentlyActive ? '<span style="font-size: 0.72rem; color: #1db954; font-weight: 700;">● Active in Player</span>' : ''}
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                "${escapeHtml(t.note || 'Squad Favorite')}"
+              </p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.76rem;" onclick="copySpotifyTrackLink('${t.url}', '${escapeHtml(t.title)}')" title="Copy Spotify Link">
+              📋
+            </button>
+            <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.76rem; border-color: rgba(244,114,182,0.3); color: #f472b6;" onclick="loveJukeboxTrack(${t.id})" title="Squad Love">
+              ❤️ ${t.loves || 1}
+            </button>
+            <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.76rem; color: #ef4444;" onclick="deleteJukeboxTrack(${t.id})" title="Remove Song">
+              ✕
+            </button>
+          </div>
+        `;
+        listContainer.appendChild(row);
+      });
+    }
+
+    /* --- Built-in Web Audio API Lo-Fi Ambient Synthesizer --- */
+    let audioCtx = null;
+    let synthOscillators = [];
+    let synthGainNode = null;
+    let isSynthRunning = false;
+    let currentSynthPresetIndex = 0;
+
+    const SYNTH_PRESETS = [
+      { name: "Warm Lo-Fi Chords", freqs: [220, 277.18, 329.63, 415.30], type: "sine" },
+      { name: "Deep Midnight Drone", freqs: [110, 164.81, 220, 329.63], type: "triangle" },
+      { name: "Sanctuary Ethereal Pad", freqs: [174.61, 220, 261.63, 349.23], type: "sine" },
+      { name: "Cosmic Trio Resonator", freqs: [130.81, 196.00, 261.63, 392.00], type: "triangle" }
+    ];
+
+    function toggleAmbientSynth() {
+      if (isSynthRunning) {
+        stopAmbientSynth();
+      } else {
+        startAmbientSynth();
+      }
+    }
+
+    function startAmbientSynth() {
+      try {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) {
+            alert('Web Audio API is not supported in this browser.');
+            return;
+          }
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        stopAmbientSynth(false);
+
+        synthGainNode = audioCtx.createGain();
+        const volSlider = document.getElementById('synth-vol');
+        const initialVol = volSlider ? parseFloat(volSlider.value) : 0.3;
+        synthGainNode.gain.setValueAtTime(initialVol * 0.25, audioCtx.currentTime);
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(650, audioCtx.currentTime);
+
+        synthGainNode.connect(filter);
+        filter.connect(audioCtx.destination);
+
+        const preset = SYNTH_PRESETS[currentSynthPresetIndex];
+        synthOscillators = preset.freqs.map(freq => {
+          const osc = audioCtx.createOscillator();
+          osc.type = preset.type;
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+          // Subtle LFO detune modulation
+          const lfo = audioCtx.createOscillator();
+          lfo.frequency.setValueAtTime(0.15 + Math.random() * 0.1, audioCtx.currentTime);
+          const lfoGain = audioCtx.createGain();
+          lfoGain.gain.setValueAtTime(4.0, audioCtx.currentTime);
+          lfo.connect(lfoGain);
+          lfoGain.connect(osc.frequency);
+          lfo.start();
+
+          osc.connect(synthGainNode);
+          osc.start();
+          return osc;
+        });
+
+        isSynthRunning = true;
+
+        const toggleBtn = document.getElementById('ambient-toggle-btn');
+        if (toggleBtn) {
+          toggleBtn.textContent = '🎧 Lo-Fi Synth: On';
+          toggleBtn.classList.remove('btn-secondary');
+          toggleBtn.classList.add('btn-primary');
+          toggleBtn.style.background = '#38bdf8';
+          toggleBtn.style.borderColor = '#38bdf8';
+        }
+
+        const panel = document.getElementById('ambient-synth-panel');
+        if (panel) panel.style.display = 'block';
+
+        const statusTxt = document.getElementById('synth-status-txt');
+        if (statusTxt) statusTxt.textContent = `Active: ${preset.name}`;
+
+        const eqBars = document.getElementById('spotify-eq-bars');
+        if (eqBars) eqBars.classList.remove('eq-paused');
+
+        showToast(`Lo-Fi Synth started (${preset.name})`, '🎧');
+      } catch (err) {
+        console.error("Audio synth error:", err);
+      }
+    }
+
+    function stopAmbientSynth(updateUi = true) {
+      if (synthOscillators.length > 0) {
+        synthOscillators.forEach(osc => {
+          try { osc.stop(); osc.disconnect(); } catch (e) {}
+        });
+        synthOscillators = [];
+      }
+      isSynthRunning = false;
+
+      if (updateUi) {
+        const toggleBtn = document.getElementById('ambient-toggle-btn');
+        if (toggleBtn) {
+          toggleBtn.textContent = '🎧 Lo-Fi Synth: Off';
+          toggleBtn.classList.remove('btn-primary');
+          toggleBtn.classList.add('btn-secondary');
+          toggleBtn.style.background = '';
+          toggleBtn.style.borderColor = '';
+        }
+
+        const panel = document.getElementById('ambient-synth-panel');
+        if (panel) panel.style.display = 'none';
+
+        const eqBars = document.getElementById('spotify-eq-bars');
+        if (eqBars) eqBars.classList.add('eq-paused');
+
+        showToast('Lo-Fi Synth turned off', '🔇');
+      }
+    }
+
+    function setAmbientVolume(val) {
+      if (synthGainNode && audioCtx) {
+        synthGainNode.gain.setValueAtTime(parseFloat(val) * 0.25, audioCtx.currentTime);
+      }
+    }
+
+    function cycleSynthPreset() {
+      currentSynthPresetIndex = (currentSynthPresetIndex + 1) % SYNTH_PRESETS.length;
+      if (isSynthRunning) {
+        startAmbientSynth();
+      } else {
+        const preset = SYNTH_PRESETS[currentSynthPresetIndex];
+        const statusTxt = document.getElementById('synth-status-txt');
+        if (statusTxt) statusTxt.textContent = `Preset: ${preset.name}`;
+        showToast(`Selected ${preset.name}`, '✨');
+      }
+    }
+
+    /* --- Canvas Confetti Celebration Utility --- */
+    const canvas = document.getElementById('confetti-canvas');
+    let ctx = null;
+    let particles = [];
+    let animationId = null;
+
+    if (canvas) {
+      ctx = canvas.getContext('2d');
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+    }
+
+    function triggerConfetti() {
+      if (!canvas || !ctx) return;
+      const colors = ['#e026c0', '#a855f7', '#fbbf24', '#38bdf8', '#10b981', '#f472b6'];
+      for (let i = 0; i < 45; i++) {
+        particles.push({
+          x: window.innerWidth * (0.3 + Math.random() * 0.4),
+          y: window.innerHeight * 0.4,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.7) * 14,
+          size: Math.random() * 7 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          decay: Math.random() * 0.02 + 0.015,
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 10
+        });
+      }
+      if (!animationId) {
+        animate();
+      }
+    }
+
+    function animate() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35; // gravity
+        p.alpha -= p.decay;
+        p.rotation += p.rotSpeed;
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      }
+
+      if (particles.length > 0) {
+        animationId = requestAnimationFrame(animate);
+      } else {
+        animationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    /* --- Initial Bootstrapping --- */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderVault();
+      renderLore();
+      renderTriviaCard();
+      renderRecs();
+      renderJukebox();
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
